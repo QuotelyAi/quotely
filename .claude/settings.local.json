@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh api:*)",
+      "Bash(git fetch:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(gh repo view:*)",
+      "Bash(git merge-base:*)",
+      "Bash(git show:*)",
+      "Bash(wc:*)",
+      "Bash(done)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: Add EZLynx blog post\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "WebFetch(domain:vercel.com)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: Add Google Tag Manager GTM-5TFZCD7G\n\n- Add GTM script to head section\n- Add noscript fallback after body tag\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(vercel --prod:*)",
+      "Bash(tasklist:*)",
+      "Bash(findstr:*)"
+    ]
+  }
+}
