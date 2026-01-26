@@ -14,13 +14,6 @@ export default function Analytics() {
     script.id = 'sa-dynamic-optimization-loader';
     document.head.appendChild(script);
 
-    // Google Tag Manager (placeholder - replace with actual ID)
-    window.dataLayer = window.dataLayer || [];
-    function gtag(...args: unknown[]) {
-      window.dataLayer!.push(args);
-    }
-    gtag('js', new Date());
-    gtag('config', 'G-28RBK32B5C'); // Quotely Google Analytics ID
   }, []);
 
   return (
@@ -146,9 +139,3 @@ export default function Analytics() {
   );
 }
 
-// Type declaration for window
-declare global {
-  interface Window {
-    dataLayer: unknown[];
-  }
-}
