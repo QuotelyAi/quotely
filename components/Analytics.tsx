@@ -17,7 +17,7 @@ export default function Analytics() {
     // Google Tag Manager (placeholder - replace with actual ID)
     window.dataLayer = window.dataLayer || [];
     function gtag(...args: unknown[]) {
-      window.dataLayer.push(args);
+      window.dataLayer!.push(args);
     }
     gtag('js', new Date());
     gtag('config', 'G-28RBK32B5C'); // Quotely Google Analytics ID
