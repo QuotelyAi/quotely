@@ -129,11 +129,6 @@ const nextConfig = {
       },
       // Fix 404s - URL corrections
       {
-        source: '/sitemap',
-        destination: '/sitemap.xml',
-        permanent: true,
-      },
-      {
         source: '/terms-of-service',
         destination: '/terms',
         permanent: true,
@@ -148,6 +143,83 @@ const nextConfig = {
       {
         source: '/products/gail-ai',
         destination: '/products/gail',
+        permanent: true,
+      },
+      // Fix Soft 404s - redirect old/crawled URLs to relevant pages
+      {
+        source: '/ams-customer-support-experience',
+        destination: '/products/ams',
+        permanent: true,
+      },
+      {
+        source: '/ams-features-competitive-comparison',
+        destination: '/products/ams',
+        permanent: true,
+      },
+      {
+        source: '/ams-client-relationship-communication',
+        destination: '/products/ams',
+        permanent: true,
+      },
+      {
+        source: '/ams-operational-efficiency-workflow',
+        destination: '/products/ams',
+        permanent: true,
+      },
+      {
+        source: '/ams-security-compliance-risk',
+        destination: '/products/ams',
+        permanent: true,
+      },
+      {
+        source: '/ams-pricing-subscription-costs',
+        destination: '/pricing',
+        permanent: true,
+      },
+      {
+        source: '/features/ai-transparency',
+        destination: '/products/gail',
+        permanent: true,
+      },
+      {
+        source: '/gail',
+        destination: '/products/gail',
+        permanent: true,
+      },
+      {
+        source: '/turborater-hub',
+        destination: '/products/rater',
+        permanent: true,
+      },
+      {
+        source: '/help',
+        destination: '/support',
+        permanent: true,
+      },
+      {
+        source: '/training',
+        destination: '/documentation',
+        permanent: true,
+      },
+      {
+        source: '/community',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/press',
+        destination: '/',
+        permanent: true,
+      },
+      // Fix duplicates without canonical
+      {
+        source: '/privacy-policy',
+        destination: '/privacy',
+        permanent: true,
+      },
+      {
+        source: '/get-quote',
+        destination: '/demo-request',
         permanent: true,
       },
     ]
