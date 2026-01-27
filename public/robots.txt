@@ -39,4 +39,3 @@ Disallow: /
 
 # Sitemap location
 Sitemap: https://tryquotely.com/sitemap.xml
-Sitemap: https://tryquotely.com/sitemap-index.xml
