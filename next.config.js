@@ -66,6 +66,7 @@ const nextConfig = {
   // Redirects for SEO
   async redirects() {
     return [
+      // Basic redirects
       {
         source: '/index.html',
         destination: '/',
@@ -124,6 +125,29 @@ const nextConfig = {
       {
         source: '/docs',
         destination: '/documentation',
+        permanent: true,
+      },
+      // Fix 404s - URL corrections
+      {
+        source: '/sitemap',
+        destination: '/sitemap.xml',
+        permanent: true,
+      },
+      {
+        source: '/terms-of-service',
+        destination: '/terms',
+        permanent: true,
+      },
+      // Blog .html redirects - strip .html extension
+      {
+        source: '/blog/:slug*.html',
+        destination: '/blog/:slug*',
+        permanent: true,
+      },
+      // Product redirects
+      {
+        source: '/products/gail-ai',
+        destination: '/products/gail',
         permanent: true,
       },
     ]
