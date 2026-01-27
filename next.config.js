@@ -222,6 +222,22 @@ const nextConfig = {
         destination: '/demo-request',
         permanent: true,
       },
+      // Fix Google chose different canonical
+      {
+        source: '/tools/color-psychology',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/compare/vs-competitor',
+        destination: '/compare',
+        permanent: true,
+      },
+      {
+        source: '/ams-sitemap',
+        destination: '/sitemap.xml',
+        permanent: true,
+      },
     ]
   },
   
