@@ -1,0 +1,25 @@
+# Quotely.info Robots.txt
+# https://quotely.info
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://quotely.info/sitemap.xml
+
+# Disallow auth and dashboard pages from indexing
+Disallow: /auth/
+Disallow: /dashboard/
+
+# Allow all search engine crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
