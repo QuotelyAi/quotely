@@ -2,65 +2,88 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Check, RefreshCw } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 
 interface PlatformPackage {
   name: string;
-  basePrice: number;
-  minTokens: number;
-  perToken: number;
+  price: number;
   tokenOptions: number[];
+  defaultTokens: number;
   featured?: boolean;
   features: string[];
+  amsLevel: string;
+  macLevel: string;
 }
 
 const platformPackages: PlatformPackage[] = [
   {
     name: "Starter",
-    basePrice: 999,
-    minTokens: 50,
-    perToken: 3.00,
+    price: 999,
     tokenOptions: [50, 100, 150, 200],
+    defaultTokens: 50,
+    amsLevel: "Essentials",
+    macLevel: "Level 1",
     features: [
-      "50 tokens/month",
-      "AMS included",
-      "CRM included",
-      "Rater included",
-      "AI Agent included",
-      "Chat/SMS support"
+      "TurboRater",
+      "Gail AI Voice",
+      "Momentum AMS Essentials",
+      "Momentum MAC Level 1",
+      "IVANS",
+      "API Key",
+      "Tokens carry over"
     ]
   },
   {
     name: "Professional",
-    basePrice: 1799,
-    minTokens: 250,
-    perToken: 2.25,
+    price: 1799,
     tokenOptions: [250, 300, 350, 400, 450],
+    defaultTokens: 250,
     featured: true,
+    amsLevel: "Professional",
+    macLevel: "Level 2",
     features: [
-      "250 tokens/month",
-      "AMS included",
-      "CRM included",
-      "Rater included",
-      "AI Agent included",
-      "Chat/SMS support"
+      "TurboRater",
+      "Gail AI Voice",
+      "Momentum AMS Professional",
+      "Momentum MAC Level 2",
+      "IVANS",
+      "API Key",
+      "Tokens carry over"
     ]
   },
   {
     name: "Enterprise",
-    basePrice: 2399,
-    minTokens: 500,
-    perToken: 1.75,
+    price: 2399,
     tokenOptions: [500, 600, 700, 800, 1000],
+    defaultTokens: 500,
+    amsLevel: "Business",
+    macLevel: "Level 3",
     features: [
-      "500 tokens/month",
-      "AMS included",
-      "CRM included",
-      "Rater included",
-      "AI Agent included",
-      "Chat/SMS support"
+      "TurboRater",
+      "Gail AI Voice",
+      "Momentum AMS Business",
+      "Momentum MAC+ Level 3",
+      "IVANS",
+      "API Key",
+      "Tokens carry over"
     ]
   }
+];
+
+const comparisonFeatures = [
+  { name: "Monthly Price", starter: "$999", professional: "$1,799", enterprise: "$2,399", isPrice: true },
+  { name: "Base Monthly Tokens", starter: "50", professional: "250", enterprise: "500" },
+  { name: "Token Carryover", starter: true, professional: true, enterprise: true },
+  { name: "TurboRater", starter: true, professional: true, enterprise: true },
+  { name: "Gail AI Voice", starter: true, professional: true, enterprise: true },
+  { name: "Momentum AMS Essentials", starter: true, professional: false, enterprise: false },
+  { name: "Momentum AMS Professional", starter: false, professional: true, enterprise: false },
+  { name: "Momentum AMS Business", starter: false, professional: false, enterprise: true },
+  { name: "Momentum MAC Level 1", starter: true, professional: false, enterprise: false },
+  { name: "Momentum MAC Level 2", starter: false, professional: true, enterprise: false },
+  { name: "Momentum MAC+ Level 3", starter: false, professional: false, enterprise: true },
+  { name: "IVANS", starter: true, professional: true, enterprise: true },
+  { name: "API Key", starter: true, professional: true, enterprise: true },
 ];
 
 export default function PricingPage() {
@@ -70,12 +93,7 @@ export default function PricingPage() {
     Enterprise: 500
   });
 
-  const calculatePrice = (pkg: PlatformPackage, tokens: number): number => {
-    const extraTokens = tokens - pkg.minTokens;
-    return pkg.basePrice + (extraTokens * pkg.perToken);
-  };
-
-  const handleTokenChange = (packageName: string, tokens: number) => {
+  const handleTokenSelect = (packageName: string, tokens: number) => {
     setSelectedTokens(prev => ({
       ...prev,
       [packageName]: tokens
@@ -83,100 +101,76 @@ export default function PricingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 py-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            Simple, Transparent Pricing
-          </h1>
-          <p className="text-xl mb-4 text-gray-400">
-            Choose the plan that fits your agency&apos;s needs
-          </p>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-900/30 text-green-400">
-            <RefreshCw size={16} />
-            <span className="text-sm font-medium">Tokens carry over month to month</span>
-          </div>
-        </div>
+        <h1 className="text-3xl font-bold text-center mb-10 text-gray-900">
+          Quotely Pricing
+        </h1>
 
-        {/* Platform Package Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+        {/* Pricing Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
           {platformPackages.map((pkg) => {
             const currentTokens = selectedTokens[pkg.name];
-            const currentPrice = calculatePrice(pkg, currentTokens);
 
             return (
               <div
                 key={pkg.name}
-                className={`bg-gray-900 rounded-xl shadow-lg p-6 text-center transition-all transform hover:-translate-y-2 border-t-4 ${
+                className={`bg-white border p-8 ${
                   pkg.featured
-                    ? 'border-yellow-500 ring-2 ring-yellow-500'
-                    : 'border-secondary-500'
+                    ? 'border-2 border-blue-600'
+                    : 'border-gray-200'
                 }`}
               >
-                {pkg.featured && (
-                  <div className="mb-3">
-                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-yellow-500 text-gray-900">
-                      MOST POPULAR
-                    </span>
-                  </div>
-                )}
+                <div className="text-xl font-bold mb-4 text-gray-900">
+                  {pkg.name} {pkg.featured && <span>&#11088;</span>}
+                </div>
 
-                <h3 className="text-2xl font-bold mb-4 text-white">
-                  {pkg.name}
-                </h3>
+                <div className="text-4xl font-bold mb-1 text-gray-900">
+                  ${pkg.price.toLocaleString()}
+                </div>
+                <div className="text-sm text-gray-500 mb-5">
+                  per month
+                </div>
 
-                {/* Token Selector Dropdown */}
-                <div className="mb-4">
-                  <label className="block text-sm text-gray-400 mb-2">
+                {/* Token Selector */}
+                <div className="bg-gray-50 p-3 mb-4">
+                  <span className="block font-bold text-sm mb-2 text-gray-700">
                     Select monthly tokens
-                  </label>
-                  <select
-                    value={currentTokens}
-                    onChange={(e) => handleTokenChange(pkg.name, Number(e.target.value))}
-                    className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 cursor-pointer"
-                  >
-                    {pkg.tokenOptions.map((tokens) => (
-                      <option key={tokens} value={tokens}>
-                        {tokens} tokens
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Price Display */}
-                <div className="mb-4">
-                  <span className="text-5xl font-bold text-yellow-500">
-                    ${currentPrice.toLocaleString()}
                   </span>
-                  <div className="text-sm mt-1 text-gray-400">
-                    per month
+                  <div className="flex flex-wrap gap-1">
+                    {pkg.tokenOptions.map((tokens) => (
+                      <button
+                        key={tokens}
+                        onClick={() => handleTokenSelect(pkg.name, tokens)}
+                        className={`px-3 py-1.5 text-xs border cursor-pointer transition-colors ${
+                          currentTokens === tokens
+                            ? 'bg-blue-600 text-white border-blue-600'
+                            : 'bg-white border-gray-300 text-gray-700 hover:border-blue-400'
+                        }`}
+                      >
+                        {tokens}
+                      </button>
+                    ))}
                   </div>
-                </div>
-
-                {/* Token Carryover Badge */}
-                <div className="mb-6 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-green-900/30 text-green-400 text-xs">
-                  <RefreshCw size={12} />
-                  <span>Unused tokens carry over</span>
                 </div>
 
                 {/* Features List */}
-                <ul className="text-left space-y-3 mb-6">
+                <ul className="mb-5">
                   {pkg.features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <Check className="mr-2 flex-shrink-0 mt-0.5 text-green-500" size={16} />
-                      <span className="text-sm text-gray-300">{feature}</span>
+                    <li
+                      key={index}
+                      className="py-2 border-b border-gray-100 last:border-b-0 text-sm text-gray-700"
+                    >
+                      <span className="text-green-500 font-bold mr-2">&#10003;</span>
+                      {feature}
                     </li>
                   ))}
                 </ul>
 
                 <Link
                   href="/demo-request"
-                  className={`block w-full px-4 py-3 rounded-lg font-semibold transition-all hover:shadow-lg ${
-                    pkg.featured
-                      ? 'bg-yellow-500 text-gray-900 hover:bg-yellow-400'
-                      : 'bg-secondary-500 text-white hover:bg-secondary-600'
-                  }`}
+                  className="block w-full py-2.5 bg-blue-600 text-white text-center text-sm font-bold hover:bg-blue-700 transition-colors"
                 >
                   Get Started
                 </Link>
@@ -185,82 +179,72 @@ export default function PricingPage() {
           })}
         </div>
 
-        {/* FAQ Section */}
-        <div className="mt-16 max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-8 text-white">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-6">
-            <div className="bg-gray-900 rounded-lg shadow p-6 border border-gray-800">
-              <h3 className="font-semibold mb-2 text-yellow-500">
-                How do tokens work?
-              </h3>
-              <p className="text-gray-400">
-                Each insurance quote uses one token. Choose a package that fits your monthly volume.
-                Unused tokens automatically carry over to the next month, so you never lose what you paid for.
-              </p>
-            </div>
-            <div className="bg-gray-900 rounded-lg shadow p-6 border border-gray-800">
-              <h3 className="font-semibold mb-2 text-yellow-500">
-                Can I change my plan?
-              </h3>
-              <p className="text-gray-400">
-                Yes! You can upgrade or downgrade your plan at any time. When you upgrade,
-                your new token allocation takes effect immediately. When you downgrade,
-                changes apply at your next billing cycle.
-              </p>
-            </div>
-            <div className="bg-gray-900 rounded-lg shadow p-6 border border-gray-800">
-              <h3 className="font-semibold mb-2 text-yellow-500">
-                Is there a setup fee?
-              </h3>
-              <p className="text-gray-400">
-                No setup fees, no hidden costs. All plans are simple monthly subscriptions
-                with everything included. You can cancel anytime.
-              </p>
-            </div>
-            <div className="bg-gray-900 rounded-lg shadow p-6 border border-gray-800">
-              <h3 className="font-semibold mb-2 text-yellow-500">
-                What happens if I need more tokens mid-month?
-              </h3>
-              <p className="text-gray-400">
-                You can upgrade your plan at any time to get more tokens immediately.
-                The price difference will be prorated for the remainder of your billing cycle.
-              </p>
-            </div>
-          </div>
-        </div>
+        {/* Feature Comparison Table */}
+        <h2 className="text-lg font-bold mt-16 mb-5 text-gray-900">
+          Feature Comparison
+        </h2>
 
-        {/* CTA Section */}
-        <div className="mt-16 text-center p-8 rounded-lg bg-primary-800">
-          <h2 className="text-2xl font-bold mb-4 text-white">
-            Ready to Transform Your Insurance Quoting?
-          </h2>
-          <p className="mb-6 text-white/90">
-            Get started today and see why agencies love Quotely
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://quotely.info"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-8 py-3 rounded-lg font-semibold transition-all hover:shadow-lg bg-yellow-500 text-gray-900 hover:bg-yellow-400"
-            >
-              See Platform Demo
-            </a>
-            <Link
-              href="/demo-request"
-              className="inline-block px-8 py-3 rounded-lg font-semibold border-2 transition-all border-white text-white hover:bg-white hover:text-primary-800"
-            >
-              Get Started Now
-            </Link>
-            <Link
-              href="/calculator"
-              className="inline-block px-8 py-3 rounded-lg font-semibold border-2 transition-all border-white/50 text-white/80 hover:border-white hover:text-white"
-            >
-              Calculate Your ROI
-            </Link>
-          </div>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr>
+                <th className="bg-gray-50 p-3 text-left border-b-2 border-gray-200 text-sm font-bold text-gray-700">
+                  Feature
+                </th>
+                <th className="bg-gray-50 p-3 text-center border-b-2 border-gray-200 text-sm font-bold text-gray-700">
+                  Starter
+                </th>
+                <th className="bg-gray-50 p-3 text-center border-b-2 border-gray-200 text-sm font-bold text-gray-700">
+                  Professional
+                </th>
+                <th className="bg-gray-50 p-3 text-center border-b-2 border-gray-200 text-sm font-bold text-gray-700">
+                  Enterprise
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonFeatures.map((feature, index) => (
+                <tr key={index}>
+                  <td className={`p-3 border-b border-gray-100 text-sm ${feature.isPrice ? 'font-bold' : 'font-medium'} bg-gray-50 text-gray-700`}>
+                    {feature.name}
+                  </td>
+                  <td className="p-3 border-b border-gray-100 text-center text-sm">
+                    {typeof feature.starter === 'boolean' ? (
+                      feature.starter ? (
+                        <span className="text-green-500 font-bold">&#10003;</span>
+                      ) : (
+                        <span className="text-red-500 font-bold">&#9679;</span>
+                      )
+                    ) : (
+                      <span className="text-gray-700">{feature.starter}</span>
+                    )}
+                  </td>
+                  <td className="p-3 border-b border-gray-100 text-center text-sm">
+                    {typeof feature.professional === 'boolean' ? (
+                      feature.professional ? (
+                        <span className="text-green-500 font-bold">&#10003;</span>
+                      ) : (
+                        <span className="text-red-500 font-bold">&#9679;</span>
+                      )
+                    ) : (
+                      <span className="text-gray-700">{feature.professional}</span>
+                    )}
+                  </td>
+                  <td className="p-3 border-b border-gray-100 text-center text-sm">
+                    {typeof feature.enterprise === 'boolean' ? (
+                      feature.enterprise ? (
+                        <span className="text-green-500 font-bold">&#10003;</span>
+                      ) : (
+                        <span className="text-red-500 font-bold">&#9679;</span>
+                      )
+                    ) : (
+                      <span className="text-gray-700">{feature.enterprise}</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
