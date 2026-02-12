@@ -244,6 +244,7 @@ const nextConfig = {
   // Performance optimization
   experimental: {
     optimizeCss: true,
+    serverComponentsExternalPackages: ['@resvg/resvg-js', 'sharp'],
   }
 }
 

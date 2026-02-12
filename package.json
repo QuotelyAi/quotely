@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@next/third-parties": "^16.1.5",
+    "@resvg/resvg-js": "^2.6.2",
     "critters": "^0.0.23",
     "lucide-react": "^0.562.0",
     "next": "14.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "satori": "^0.19.2",
     "sharp": "^0.34.5"
   },
   "devDependencies": {

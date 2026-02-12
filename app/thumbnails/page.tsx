@@ -1,7 +1,7 @@
-import YouTubeThumbnailDesigner from "../../components/ThumbnailDesigner";
+import YouTubeThumbnailDesigner from "@/components/ThumbnailDesigner";
 
 export const metadata = {
-  title: "YouTube Thumbnail Designer | Quotely",
+  title: "YouTube Thumbnail Generator | Quotely",
   robots: "noindex",
 };
 
