@@ -7,9 +7,9 @@ import { Header, Footer } from '@/components/layout'
 import { organizationSchema, websiteSchema, softwareApplicationSchema, localBusinessSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
-  title: 'Quotely - AI-Powered Insurance Quoting Platform | 60% Faster Quotes',
-  description: 'Revolutionary AI-powered insurance quoting platform. Generate accurate quotes 60% faster than Applied Rater and EZLynx. SOC 2 compliant, 50+ carrier integrations. Request demo today.',
-  keywords: 'insurance quoting software, insurance platform, AI insurance quotes, faster than Applied Rater, insurance agency software, quote management, carrier integration, white-label insurance platform',
+  title: 'Quotely - AI-Powered Insurance Intelligence Platform | Quote in Under 22 Seconds',
+  description: 'AI-powered insurance quoting platform. Full auto + home bundle in under 22 seconds. 200+ carriers via TurboRater by Zywave. SOC 2 compliant. AMS, CRM, QUAD AI, and Gail Voice included.',
+  keywords: 'insurance quoting software, insurance platform, AI insurance quotes, TurboRater, insurance agency software, quote management, carrier integration, insurance rating engine',
   authors: [{ name: 'Try Quotely' }],
   creator: 'Try Quotely',
   publisher: 'Try Quotely',
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Quotely - 60% Faster Insurance Quotes with AI',
-    description: 'Revolutionary AI-powered insurance quoting platform. Generate accurate quotes 60% faster than traditional platforms.',
+    title: 'Quotely - AI Insurance Platform | Quote in Under 22 Seconds',
+    description: 'AI-powered insurance quoting platform. Auto in 4.8s, home in 17s. 200+ carriers via TurboRater.',
     url: 'https://tryquotely.com',
     siteName: 'Quotely',
     images: [
@@ -40,8 +40,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Quotely - 60% Faster Insurance Quotes',
-    description: 'AI-powered insurance quoting platform. 60% faster than Applied Rater.',
+    title: 'Quotely - AI Insurance Platform | Under 22s Quotes',
+    description: 'AI-powered insurance quoting. Auto in 4.8s, home in 17s. 200+ carriers via TurboRater.',
     site: '@TryQuotely',
     creator: '@TryQuotely',
     images: ['https://tryquotely.com/twitter-image.png'],
@@ -81,6 +81,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://dashboard.searchatlas.com" />
+        {/* Harbor SEO — AI-optimised titles, descriptions, and schema */}
+        <script
+          data-harbor-site="nd743qqbpt4zvqswwtfz8f4ydx84kdcp"
+          src="https://outgoing-oyster-428.convex.site/api/harbor-seo.js?siteId=nd743qqbpt4zvqswwtfz8f4ydx84kdcp"
+          async
+        />
       </head>
       <body className="bg-gray-950 text-white min-h-screen flex flex-col">
         {/* Microsoft Clarity - Heatmaps & Session Recording */}
