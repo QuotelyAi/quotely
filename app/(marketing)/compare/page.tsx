@@ -39,6 +39,7 @@ const features = [
       { name: '99.5%+ SLA uptime', starter: true, professional: true, enterprise: true },
       { name: 'SSL encryption', starter: true, professional: true, enterprise: true },
       { name: 'Envelope encryption (AES-256)', starter: true, professional: true, enterprise: true },
+      { name: 'SOC 2 Certified (via Clerk)', starter: true, professional: true, enterprise: true },
     ],
   },
   {
