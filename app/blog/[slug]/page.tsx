@@ -167,6 +167,33 @@ export default function BlogPostPage({
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
+          {/* Sources */}
+          {post.sources && post.sources.length > 0 && (
+            <div className="mt-12 pt-8 border-t border-gray-800">
+              <h3 className="text-lg font-semibold text-white mb-4">References</h3>
+              <ol className="list-decimal list-inside space-y-2">
+                {post.sources.map((source, i) => (
+                  <li key={i} className="text-sm text-gray-400">
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-yellow-500 hover:text-yellow-400"
+                    >
+                      {source.title}
+                    </a>
+                    {source.publisher && (
+                      <span className="text-gray-500"> — {source.publisher}</span>
+                    )}
+                    {source.date && (
+                      <span className="text-gray-500"> ({source.date})</span>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+
           {/* Share Section */}
           <div className="mt-12 pt-8 border-t border-gray-800">
             <h3 className="text-lg font-semibold text-white mb-4">Share this article</h3>

@@ -4,17 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Search, Calendar, Clock, ArrowRight } from 'lucide-react';
-import { blogPosts } from '@/data/blogPosts';
-
-// Define tags based on category
-function getTagsFromCategory(category: string): string[] {
-  if (category === 'Digital Transformation') {
-    return ['Digital Transformation', 'Automation', 'Innovation'];
-  } else if (category === 'AI & Technology') {
-    return ['AI', 'Insurance Technology', 'Innovation'];
-  }
-  return ['Cost Savings', 'AI', 'Efficiency'];
-}
+import { blogPosts, BLOG_CATEGORIES } from '@/data/blogPosts';
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -22,10 +12,9 @@ export default function BlogPage() {
   const [visibleCount, setVisibleCount] = useState(12);
   const POSTS_PER_PAGE = 12;
 
-  // Process posts with tags
+  // Process posts with formatted dates
   const processedPosts = blogPosts.map(post => ({
     ...post,
-    tags: getTagsFromCategory(post.category),
     formattedDate: new Date(post.date).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
@@ -33,19 +22,14 @@ export default function BlogPage() {
     })
   }));
 
-  // Get all unique tags
-  const allTags = Array.from(
-    new Set(processedPosts.flatMap(post => post.tags))
-  ).sort();
-
-  // Filter posts based on search and selected tag
+  // Filter posts based on search and selected category
   const filteredPosts = processedPosts.filter(post => {
     const matchesSearch = searchQuery === '' ||
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+      post.category.toLowerCase().includes(searchQuery.toLowerCase());
 
-    const matchesTag = selectedTag === null || post.tags.includes(selectedTag);
+    const matchesTag = selectedTag === null || post.category === selectedTag;
 
     return matchesSearch && matchesTag;
   });
@@ -108,17 +92,17 @@ export default function BlogPage() {
             >
               All Topics
             </button>
-            {allTags.map(tag => (
+            {BLOG_CATEGORIES.map(category => (
               <button
-                key={tag}
-                onClick={() => setSelectedTag(tag)}
+                key={category}
+                onClick={() => setSelectedTag(category)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  selectedTag === tag
+                  selectedTag === category
                     ? 'bg-yellow-500 text-gray-900'
                     : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                 }`}
               >
-                {tag}
+                {category}
               </button>
             ))}
           </div>
