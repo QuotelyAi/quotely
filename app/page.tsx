@@ -4,10 +4,10 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Quotely - AI-Powered Insurance Intelligence Platform',
-  description: 'Transform your agency with AI-powered quoting that\'s 60% faster. Native carrier integrations, real-time rate comparison, and Gail AI voice assistant.',
+  description: 'Transform your agency with AI-powered quoting. Full auto + home bundle in under 22 seconds. 200+ carrier integrations via TurboRater, and Gail AI voice assistant — all in one platform.',
   openGraph: {
     title: 'Quotely - AI-Powered Insurance Intelligence Platform',
-    description: 'Transform your agency with AI-powered quoting that\'s 60% faster.',
+    description: 'Full auto + home bundle quoted in under 22 seconds. 200+ carriers via TurboRater.',
   },
 };
 
@@ -52,7 +52,7 @@ export default function HomePage() {
               </h1>
 
               <p className="text-lg text-gray-300 mb-8 max-w-xl">
-                Transform your agency with AI-powered quoting that&apos;s <span className="text-yellow-500 font-semibold">60% faster</span>. Native carrier integrations, real-time rate comparison, and Gail AI voice assistant—all in one platform.
+                Auto quoted in 4.8 seconds. Home in 17 seconds. Full bundle <span className="text-yellow-500 font-semibold">under 22 seconds</span> — not 10–15 minutes. 200+ carriers via TurboRater, and Gail AI voice assistant — all in one platform.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -77,28 +77,23 @@ export default function HomePage() {
             {/* Right Column - Stats */}
             <div className="grid grid-cols-2 gap-6">
               <div className="bg-gray-900/50 rounded-xl p-6 border border-gray-800">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-1">60%</div>
-                <div className="text-gray-400 text-sm">Faster Quote Generation</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-1">&lt;22s</div>
+                <div className="text-gray-400 text-sm">Full Bundle Quote*</div>
               </div>
 
               <div className="bg-gray-900/50 rounded-xl p-6 border border-gray-800">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-1">99.9%</div>
-                <div className="text-gray-400 text-sm">Platform Uptime</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-1">99.5%+</div>
+                <div className="text-gray-400 text-sm">Infra SLA Uptime</div>
               </div>
 
               <div className="bg-gray-900/50 rounded-xl p-6 border border-gray-800">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-1">15+</div>
-                <div className="text-gray-400 text-sm">Carrier Integrations</div>
-              </div>
-
-              <div className="bg-gray-900/50 rounded-xl p-6 border border-gray-800">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-1">120K</div>
-                <div className="text-gray-400 text-sm">Annual Quotes Included</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-1">200+</div>
+                <div className="text-gray-400 text-sm">Carriers via TurboRater</div>
               </div>
 
               <div className="col-span-2 bg-gray-900/50 rounded-xl p-6 border border-gray-800">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-1">50</div>
-                <div className="text-gray-400 text-sm">State Compliance</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-1">50 + DC</div>
+                <div className="text-gray-400 text-sm">State Coverage</div>
               </div>
             </div>
           </div>
