@@ -125,9 +125,9 @@ const Header = () => {
 
             {/* Static Links */}
             <Link
-              href="/products/ams"
+              href="/how-it-works"
               className={`px-4 py-2 text-sm font-medium transition-colors duration-200 ${
-                isActive('/products/ams') ? 'text-yellow-500' : 'text-gray-300 hover:text-white'
+                isActive('/how-it-works') ? 'text-yellow-500' : 'text-gray-300 hover:text-white'
               }`}
             >
               How It Works
@@ -228,7 +228,7 @@ const Header = () => {
 
               {/* Other Links */}
               <Link
-                href="/products/ams"
+                href="/how-it-works"
                 className="block px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-yellow-500 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >

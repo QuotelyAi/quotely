@@ -155,6 +155,11 @@ const Footer = () => {
                   Documentation
                 </Link>
               </li>
+              <li>
+                <Link href="/status" className="text-gray-400 hover:text-yellow-500 transition-colors">
+                  System Status
+                </Link>
+              </li>
             </ul>
           </div>
 

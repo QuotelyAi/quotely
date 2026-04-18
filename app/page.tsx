@@ -60,7 +60,7 @@ export default function HomePage() {
                   href="/demo-request"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-yellow-500 text-gray-900 font-semibold rounded-lg hover:bg-yellow-400 transition-colors"
                 >
-                  Get Started Free
+                  Request a Demo
                   <span>→</span>
                 </Link>
                 <a
@@ -205,7 +205,7 @@ export default function HomePage() {
               href="/demo-request"
               className="inline-flex items-center justify-center px-8 py-4 bg-yellow-500 text-gray-900 font-semibold rounded-lg hover:bg-yellow-400 transition-colors"
             >
-              Get Started Free
+              Request a Demo
             </Link>
             <a
               href="https://quotely.info"

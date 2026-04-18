@@ -11,37 +11,78 @@ export const metadata: Metadata = {
   },
 };
 
-const integrationCategories = [
+type Partner = { name: string; note?: string; badge?: string };
+
+const integrationCategories: Array<{
+  title: string;
+  description: string;
+  partners: Partner[];
+}> = [
   {
     title: 'Rating Engines',
-    description: 'Connect to comparative raters for instant multi-carrier quotes',
-    partners: ['TurboRater by Zywave', 'EZLynx Rating', 'ITC Rater', 'Applied Rater']
+    description:
+      'TurboRater (200+ personal lines carriers) is included with every Quotely plan. EZLynx, ITC, and Applied Rater are optional — use your existing subscription if you already have one; Quotely quotes through TurboRater by default.',
+    partners: [
+      { name: 'TurboRater by Zywave', note: 'Included — 200+ carriers, no separate subscription', badge: 'Included' },
+      { name: 'EZLynx Rating', note: 'Optional — bring your own EZLynx subscription' },
+      { name: 'ITC Rater', note: 'Optional — bring your own ITC subscription' },
+      { name: 'Applied Rater', note: 'Optional — bring your own Applied subscription' },
+    ],
   },
   {
     title: 'Carriers',
     description: 'Direct connections to top insurance carriers',
-    partners: ['Progressive', 'Travelers', 'Hartford', 'Liberty Mutual', 'Nationwide', 'And 100+ more']
+    partners: [
+      { name: 'Progressive' },
+      { name: 'Travelers' },
+      { name: 'Hartford' },
+      { name: 'Liberty Mutual' },
+      { name: 'Nationwide' },
+      { name: 'And 100+ more' },
+    ],
   },
   {
-    title: 'AMS/CRM',
-    description: 'Sync with your existing management systems',
-    partners: ['MomentumAMP by NowCerts', 'Applied Epic', 'Vertafore AMS360', 'HawkSoft']
+    title: 'AMS / CRM',
+    description: 'Sync clients, policies, and documents with the agency management system you already run.',
+    partners: [
+      {
+        name: 'NowCerts',
+        note: 'Two-way sync of clients, policies, and documents. Popular across independent agencies.',
+      },
+      {
+        name: 'MomentumAMP',
+        note: 'NowCerts renewal + cross-sell automation add-on. Sync runs alongside the core NowCerts connector.',
+      },
+      {
+        name: 'GSIL',
+        note: 'Native GSIL AMS sync — client and policy data flows both ways. ~15-minute setup with your GSIL admin.',
+      },
+      { name: 'Applied Epic', note: 'Mid-to-large agency AMS. Client, policy, and document sync.' },
+      { name: 'Vertafore AMS360', note: 'Client and policy sync for AMS360 agencies.' },
+      { name: 'HawkSoft', note: 'Policy and activity sync for HawkSoft agencies.' },
+    ],
   },
   {
     title: 'Communication',
     description: 'Connect your communication channels',
-    partners: ['Vapi.ai', 'Twilio', 'RingCentral', 'Microsoft Teams', 'Slack']
+    partners: [
+      { name: 'Vapi.ai' },
+      { name: 'Twilio' },
+      { name: 'RingCentral' },
+      { name: 'Microsoft Teams' },
+      { name: 'Slack' },
+    ],
   },
   {
     title: 'Payment Processing',
     description: 'Accept payments and process premiums',
-    partners: ['Stripe', 'ePayPolicy', 'PaySimple', 'QuickBooks']
+    partners: [{ name: 'Stripe' }, { name: 'ePayPolicy' }, { name: 'PaySimple' }, { name: 'QuickBooks' }],
   },
   {
     title: 'Document Management',
     description: 'Store and manage documents securely',
-    partners: ['DocuSign', 'Google Drive', 'Dropbox', 'SharePoint']
-  }
+    partners: [{ name: 'DocuSign' }, { name: 'Google Drive' }, { name: 'Dropbox' }, { name: 'SharePoint' }],
+  },
 ];
 
 const features = [
@@ -124,11 +165,21 @@ export default function IntegrationsPage() {
                 <p className="text-gray-400 mb-4">
                   {category.description}
                 </p>
-                <div className="space-y-2">
+                <div className="space-y-3">
                   {category.partners.map((partner, i) => (
-                    <div key={i} className="text-gray-300 text-sm flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
-                      {partner}
+                    <div key={i} className="text-gray-300 text-sm">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full shrink-0"></div>
+                        <span className="font-medium text-white">{partner.name}</span>
+                        {partner.badge && (
+                          <span className="ml-1 text-[10px] uppercase tracking-wide text-gray-900 bg-yellow-500 px-2 py-0.5 rounded font-semibold">
+                            {partner.badge}
+                          </span>
+                        )}
+                      </div>
+                      {partner.note && (
+                        <div className="pl-3.5 text-gray-400 text-xs mt-0.5">{partner.note}</div>
+                      )}
                     </div>
                   ))}
                 </div>
