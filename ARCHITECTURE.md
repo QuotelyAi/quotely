@@ -57,7 +57,6 @@ Internal network management and monitoring for all Quotely sites.
 | Technology | Provider | Purpose |
 |------------|----------|---------|
 | Gail | Nothing Technologies | AI assistant |
-| Vapi.ai | Vapi | Voice AI |
 | Claude CODE | Anthropic | Development & coding |
 
 ---
@@ -69,7 +68,6 @@ Internal network management and monitoring for all Quotely sites.
 | NowCerts | MomentumAMP | AMS & CRM |
 | Zywave | TurboRater | Rating engine |
 | Nothing Technologies | Gail | AI capabilities |
-| Vapi.ai | Voice AI | Voice automation |
 
 ---
 

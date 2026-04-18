@@ -66,7 +66,6 @@ const integrationCategories: Array<{
     title: 'Communication',
     description: 'Connect your communication channels',
     partners: [
-      { name: 'Vapi.ai' },
       { name: 'Twilio' },
       { name: 'RingCentral' },
       { name: 'Microsoft Teams' },
