@@ -81,21 +81,25 @@ export default function ConnectPricingPage() {
   const [loading, setLoading] = useState<string | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  async function startCheckout(priceId: string) {
+  async function startCheckout(priceId: string, quantity?: number, customerEmail?: string) {
     if (!priceId || loading) return;
     setLoading(priceId);
     try {
-      const res = await fetch('/api/stripe/checkout', {
+      const response = await fetch('/api/stripe/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           priceId,
-          mode: 'subscription',
-          successUrl: `${window.location.origin}/connect/success`,
-          cancelUrl: window.location.href,
+          ...(quantity && quantity > 1 ? { quantity } : {}),
+          ...(customerEmail ? { customerEmail } : {}),
         }),
       });
-      const { url } = await res.json();
+
+      if (!response.ok) {
+        throw new Error('Unable to start checkout');
+      }
+
+      const { url } = await response.json() as { url: string };
       window.location.href = url;
     } catch {
       setLoading(null);
