@@ -3,27 +3,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-const PRICE_CONNECT = process.env.NEXT_PUBLIC_STRIPE_CONNECT_PRICE_ID ?? '';
-const PRICE_TOKEN_50 = process.env.NEXT_PUBLIC_STRIPE_TOKEN_50_PRICE_ID ?? '';
-const PRICE_TOKEN_200 = process.env.NEXT_PUBLIC_STRIPE_TOKEN_200_PRICE_ID ?? '';
-const PRICE_TOKEN_500 = process.env.NEXT_PUBLIC_STRIPE_TOKEN_500_PRICE_ID ?? '';
-const PRICE_TOKEN_1000 = process.env.NEXT_PUBLIC_STRIPE_TOKEN_1000_PRICE_ID ?? '';
-
-interface TokenPack {
-  tokens: number;
-  price: number;
-  perToken: number;
-  priceId: string;
-  bestValue?: boolean;
-}
-
-const tokenPacks: TokenPack[] = [
-  { tokens: 50, price: 85, perToken: 1.70, priceId: PRICE_TOKEN_50 },
-  { tokens: 200, price: 340, perToken: 1.70, priceId: PRICE_TOKEN_200 },
-  { tokens: 500, price: 650, perToken: 1.30, priceId: PRICE_TOKEN_500, bestValue: true },
-  { tokens: 1000, price: 1200, perToken: 1.20, priceId: PRICE_TOKEN_1000 },
-];
-
 interface ComparisonRow {
   feature: string;
   connect: boolean | string;
@@ -36,7 +15,6 @@ const comparisonRows: ComparisonRow[] = [
   { feature: 'TurboRater Auto Quotes', connect: '100/mo included', starter: 'Unlimited*', professional: 'Unlimited*' },
   { feature: 'Quote Overage', connect: '$2.50/quote', starter: 'Token-based', professional: 'Token-based' },
   { feature: 'Per-agent pricing', connect: true, starter: false, professional: false },
-  { feature: 'Add-on token packs', connect: true, starter: false, professional: false },
   { feature: 'Momentum AMP AMS', connect: 'BYO (optional)', starter: 'Provisioned', professional: 'Provisioned' },
   { feature: 'Gail AI Voice', connect: 'BYO attach (optional)', starter: 'Provisioned', professional: 'Provisioned' },
   { feature: 'CRM', connect: false, starter: true, professional: true },
@@ -47,7 +25,7 @@ const comparisonRows: ComparisonRow[] = [
 const faqs = [
   {
     q: "What's a Quotely token?",
-    a: "Tokens power QUAD AI tasks — lead scoring, email drafts, coverage summaries, and more. TurboRater auto quotes are not token-billed; they draw from your 100/mo included allowance. Token packs are separate add-on subscriptions that run alongside your Connect base plan.",
+    a: "Tokens power QUAD AI tasks — lead scoring, email drafts, coverage summaries, and more. TurboRater auto quotes are not token-billed; they draw from your 100/mo included allowance.",
   },
   {
     q: "Can I use my own AMS or CRM?",
@@ -59,7 +37,7 @@ const faqs = [
   },
   {
     q: "Is there a contract or minimum term?",
-    a: "No. Quotely Connect is month-to-month. Cancel anytime from your billing dashboard. Token pack subscriptions cancel independently from your base plan.",
+    a: "No. Quotely Connect is month-to-month. Cancel anytime from your billing dashboard.",
   },
   {
     q: "How does upgrading to Starter work?",
@@ -78,33 +56,7 @@ function CellValue({ value }: { value: boolean | string }) {
 }
 
 export default function ConnectPricingPage() {
-  const [loading, setLoading] = useState<string | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  async function startCheckout(priceId: string, quantity?: number, customerEmail?: string) {
-    if (!priceId || loading) return;
-    setLoading(priceId);
-    try {
-      const response = await fetch('/api/stripe/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          priceId,
-          ...(quantity && quantity > 1 ? { quantity } : {}),
-          ...(customerEmail ? { customerEmail } : {}),
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Unable to start checkout');
-      }
-
-      const { url } = await response.json() as { url: string };
-      window.location.href = url;
-    } catch {
-      setLoading(null);
-    }
-  }
 
   return (
     <div className="min-h-screen bg-gray-950">
@@ -156,7 +108,7 @@ export default function ConnectPricingPage() {
               },
               {
                 title: 'Growing Agencies',
-                desc: 'Add agents at $299/head. Token packs scale with volume. Upgrade to Starter when you\'re ready for provisioned Gail + AMS.',
+                desc: "Add agents at $299/head. Upgrade to Starter when you're ready for provisioned Gail + AMS.",
               },
             ].map(({ title, desc }) => (
               <div key={title} className="rounded-xl border border-gray-800 bg-gray-900 p-6">
@@ -220,13 +172,12 @@ export default function ConnectPricingPage() {
               </p>
             </div>
 
-            <button
-              onClick={() => startCheckout(PRICE_CONNECT)}
-              disabled={!!loading}
-              className="w-full py-4 rounded-xl bg-yellow-500 text-gray-900 font-bold text-base hover:bg-yellow-400 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            <a
+              href="https://quotely.info"
+              className="block w-full py-4 rounded-xl bg-yellow-500 text-gray-900 font-bold text-base hover:bg-yellow-400 transition-colors text-center"
             >
-              {loading === PRICE_CONNECT ? 'Redirecting…' : 'Get Started — $299/agent/mo'}
-            </button>
+              Get Started — $299/agent/mo
+            </a>
 
             <p className="text-xs text-gray-600 text-center mt-4">
               Need Gail + Momentum provisioned by Quotely?{' '}
@@ -234,51 +185,6 @@ export default function ConnectPricingPage() {
                 See Starter at $999/mo →
               </Link>
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Token packs ── */}
-      <section className="py-16 px-4 border-t border-gray-800">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-white mb-3">Add-On Token Packs</h2>
-            <p className="text-gray-400 max-w-xl mx-auto">
-              Tokens power QUAD AI tasks. Subscribe to a pack alongside your Connect plan — they stack, cancel independently.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {tokenPacks.map(({ tokens, price, perToken, priceId, bestValue }) => (
-              <div
-                key={tokens}
-                className={`relative rounded-2xl border p-7 flex flex-col ${
-                  bestValue ? 'border-yellow-500 bg-gray-900' : 'border-gray-800 bg-gray-900'
-                }`}
-              >
-                {bestValue && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="rounded-full bg-yellow-500 px-3 py-1 text-xs font-bold text-gray-900 whitespace-nowrap">
-                      Best Value
-                    </span>
-                  </div>
-                )}
-                <div className="text-3xl font-bold text-white">{tokens.toLocaleString()}</div>
-                <div className="text-sm text-gray-500 mb-4">tokens/month</div>
-                <div className="text-2xl font-bold text-white">${price.toLocaleString()}</div>
-                <div className="text-xs text-gray-500 mb-6">/month &middot; ${perToken.toFixed(2)}/token</div>
-                <button
-                  onClick={() => startCheckout(priceId)}
-                  disabled={!!loading}
-                  className={`mt-auto py-2.5 rounded-lg text-sm font-semibold transition-colors disabled:opacity-60 disabled:cursor-not-allowed ${
-                    bestValue
-                      ? 'bg-yellow-500 text-gray-900 hover:bg-yellow-400'
-                      : 'border border-gray-700 text-white hover:border-yellow-500 hover:text-yellow-400'
-                  }`}
-                >
-                  {loading === priceId ? 'Redirecting…' : 'Add Pack'}
-                </button>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -305,7 +211,7 @@ export default function ConnectPricingPage() {
                   <th className="px-5 py-4 text-center font-semibold text-white">
                     Professional
                     <br />
-                    <span className="font-normal text-gray-400 text-xs">from $1,799/mo</span>
+                    <span className="font-normal text-gray-400 text-xs">$1,799/mo</span>
                   </th>
                 </tr>
               </thead>
@@ -328,7 +234,7 @@ export default function ConnectPricingPage() {
             </table>
           </div>
           <p className="text-xs text-gray-600 mt-4 text-center">
-            * Token-based quoting. 50 States + DC &middot; 200+ carriers via TurboRater by Zywave.
+            * 50 States + DC &middot; 200+ carriers via TurboRater by Zywave.
           </p>
         </div>
       </section>
@@ -372,13 +278,12 @@ export default function ConnectPricingPage() {
             Start with one agent. Scale when you&apos;re ready. No contracts, no minimums.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => startCheckout(PRICE_CONNECT)}
-              disabled={!!loading}
-              className="px-8 py-4 rounded-xl bg-yellow-500 text-gray-900 font-bold text-base hover:bg-yellow-400 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            <a
+              href="https://quotely.info"
+              className="px-8 py-4 rounded-xl bg-yellow-500 text-gray-900 font-bold text-base hover:bg-yellow-400 transition-colors text-center"
             >
-              {loading === PRICE_CONNECT ? 'Redirecting…' : 'Get Quotely Connect'}
-            </button>
+              Get Quotely Connect
+            </a>
             <Link
               href="/demo-request"
               className="px-8 py-4 rounded-xl border border-gray-700 text-white font-semibold text-base hover:border-yellow-500 hover:text-yellow-400 transition-colors"
