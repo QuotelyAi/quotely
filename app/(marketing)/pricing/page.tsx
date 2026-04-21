@@ -1,98 +1,94 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
 
-interface TokenOption {
-  tokens: number;
-  price: number;
-}
-
-interface PlatformPackage {
+interface Tier {
   name: string;
-  tokenOptions: TokenOption[];
+  price: number;
+  description: string;
   featured?: boolean;
   features: string[];
+  quad: string;
 }
 
-const platformPackages: PlatformPackage[] = [
+const tiers: Tier[] = [
   {
-    name: "Starter",
-    tokenOptions: [
-      { tokens: 50, price: 999 },
-      { tokens: 100, price: 1199 },
-      { tokens: 150, price: 1399 },
-      { tokens: 200, price: 1599 },
-    ],
+    name: 'Connect',
+    price: 299,
+    description: 'Everything you need to get started with AI-powered quoting.',
     features: [
-      "AMS (Momentum AMP) included",
-      "CRM included",
-      "TurboRater included",
-      "QUAD AI + Gail Voice included",
-      "Unused tokens carry over",
-      "API access + Credential vault",
+      'TurboRater (200+ carriers)',
+      'QUAD AI — web chat + voice',
+      '100 quotes per month',
+      'AMS (Momentum AMP)',
+      'CRM',
+      'Credential vault',
+      'API access',
     ],
+    quad: 'Read & Suggest',
   },
   {
-    name: "Professional",
-    tokenOptions: [
-      { tokens: 250, price: 1799 },
-      { tokens: 300, price: 1999 },
-      { tokens: 350, price: 2199 },
-      { tokens: 400, price: 2399 },
-      { tokens: 450, price: 2599 },
+    name: 'Starter',
+    price: 999,
+    description: 'Unlimited quoting with SMS-based AI outreach.',
+    features: [
+      'Everything in Connect',
+      'Unlimited TurboRater quotes',
+      'QUAD AI + SMS channel',
+      'Gail Voice AI',
+      'Write to Quotely autonomy',
+      'Token carryover',
     ],
+    quad: 'Write to Quotely',
+  },
+  {
+    name: 'Professional',
+    price: 1799,
+    description: 'Multi-channel QUAD with self-learning and review council.',
     featured: true,
     features: [
-      "AMS (Momentum AMP) included",
-      "CRM included",
-      "TurboRater included",
-      "QUAD AI + Gail Voice included",
-      "Unused tokens carry over",
-      "API access + Credential vault",
+      'Everything in Starter',
+      'QUAD AI + Telegram + Slack',
+      'QUAD Self-Learning',
+      'QUAD Review Council',
+      'Write to integrations autonomy',
+      'IVANS integration',
     ],
+    quad: 'Write to Integrations',
   },
   {
-    name: "Enterprise",
-    tokenOptions: [
-      { tokens: 500, price: 2399 },
-      { tokens: 600, price: 2699 },
-      { tokens: 700, price: 2999 },
-      { tokens: 800, price: 3299 },
-      { tokens: 1000, price: 3799 },
-    ],
+    name: 'Enterprise',
+    price: 2399,
+    description: 'Full autonomy, custom wiki, and outbound AI initiation.',
     features: [
-      "AMS (Momentum AMP) included",
-      "CRM included",
-      "TurboRater included",
-      "QUAD AI + Gail Voice included",
-      "Unused tokens carry over",
-      "API access + Credential vault",
+      'Everything in Professional',
+      'QUAD Custom Wiki',
+      'Outbound initiation autonomy',
+      'Priority support',
     ],
+    quad: 'Outbound Initiation',
   },
 ];
 
-const comparisonFeatures = [
-  { name: "TurboRater (200+ carriers)", starter: true, professional: true, enterprise: true },
-  { name: "QUAD AI + Gail Voice", starter: true, professional: true, enterprise: true },
-  { name: "AMS (Momentum AMP)", starter: true, professional: true, enterprise: true },
-  { name: "CRM", starter: true, professional: true, enterprise: true },
-  { name: "IVANS", starter: true, professional: true, enterprise: true },
-  { name: "API Access", starter: true, professional: true, enterprise: true },
-  { name: "Credential Vault", starter: true, professional: true, enterprise: true },
-  { name: "Token Carryover", starter: true, professional: true, enterprise: true },
+const comparisonRows = [
+  { label: 'TurboRater (200+ carriers)', values: [true, true, true, true] },
+  { label: 'QUAD AI (web chat + voice)', values: [true, true, true, true] },
+  { label: 'AMS (Momentum AMP)', values: [true, true, true, true] },
+  { label: 'CRM', values: [true, true, true, true] },
+  { label: 'Credential Vault', values: [true, true, true, true] },
+  { label: 'API Access', values: [true, true, true, true] },
+  { label: 'Unlimited Quotes', values: [false, true, true, true] },
+  { label: 'SMS Channel', values: [false, true, true, true] },
+  { label: 'Gail Voice AI', values: [false, true, true, true] },
+  { label: 'Telegram + Slack', values: [false, false, true, true] },
+  { label: 'QUAD Self-Learning', values: [false, false, true, true] },
+  { label: 'QUAD Review Council', values: [false, false, true, true] },
+  { label: 'QUAD Custom Wiki', values: [false, false, false, true] },
+  { label: 'Outbound AI Initiation', values: [false, false, false, true] },
 ];
 
 export default function PricingPage() {
-  const [selectedIndex, setSelectedIndex] = useState<Record<string, number>>({
-    Starter: 0,
-    Professional: 0,
-    Enterprise: 0,
-  });
-
   return (
     <div className="min-h-screen bg-gray-950 py-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -100,133 +96,112 @@ export default function PricingPage() {
           </h1>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Every plan includes the full platform — AMS, CRM, TurboRater, QUAD AI, and Gail Voice.
-            Pick your token level and scale when you&apos;re ready.
+            Start at $299 and scale when you&apos;re ready.
           </p>
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {platformPackages.map((pkg) => {
-            const idx = selectedIndex[pkg.name];
-            const selected = pkg.tokenOptions[idx];
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {tiers.map((tier) => (
+            <div
+              key={tier.name}
+              className={`relative rounded-2xl border p-7 flex flex-col ${
+                tier.featured
+                  ? 'border-yellow-500 bg-gray-900'
+                  : 'border-gray-800 bg-gray-900'
+              }`}
+            >
+              {tier.featured && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="rounded-full bg-yellow-500 px-3 py-1 text-xs font-semibold text-gray-900 whitespace-nowrap">
+                    Most Popular
+                  </span>
+                </div>
+              )}
 
-            return (
-              <div
-                key={pkg.name}
-                className={`relative rounded-2xl border p-8 ${
-                  pkg.featured
-                    ? 'border-yellow-500 bg-gray-900'
-                    : 'border-gray-800 bg-gray-900'
+              <h3 className="text-lg font-semibold text-white">{tier.name}</h3>
+              <p className="mt-1 text-sm text-gray-500 min-h-[2.5rem]">{tier.description}</p>
+
+              <div className="mt-4 flex items-baseline gap-1">
+                <span className="text-4xl font-bold text-white">
+                  ${tier.price.toLocaleString()}
+                </span>
+                <span className="text-sm text-gray-400">/month</span>
+              </div>
+
+              <div className="mt-2 mb-5">
+                <span className="inline-block rounded-md bg-gray-800 px-2 py-0.5 text-xs text-yellow-400">
+                  QUAD: {tier.quad}
+                </span>
+              </div>
+
+              <ul className="mb-8 space-y-2.5 flex-1">
+                {tier.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2">
+                    <span className="text-yellow-500 font-bold text-sm mt-0.5">&#10003;</span>
+                    <span className="text-sm text-gray-300">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                href="/demo-request"
+                className={`block w-full py-3 rounded-lg text-center text-sm font-semibold transition-colors ${
+                  tier.featured
+                    ? 'bg-yellow-500 text-gray-900 hover:bg-yellow-400'
+                    : 'border border-gray-700 text-white hover:border-yellow-500 hover:text-yellow-500'
                 }`}
               >
-                {pkg.featured && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="rounded-full bg-yellow-500 px-3 py-1 text-xs font-semibold text-gray-900">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-
-                <h3 className="text-lg font-semibold text-white">{pkg.name}</h3>
-
-                <div className="mt-3 flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-white">
-                    ${selected.price.toLocaleString()}
-                  </span>
-                  <span className="text-sm text-gray-400">/month</span>
-                </div>
-                <p className="mt-1 text-sm text-gray-400">
-                  {selected.tokens} tokens/month
-                </p>
-
-                {/* Token Selector */}
-                <div className="mt-5 mb-6">
-                  <label className="text-xs font-medium text-gray-500 uppercase tracking-wide">
-                    Select tokens
-                  </label>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {pkg.tokenOptions.map((option, i) => (
-                      <button
-                        key={option.tokens}
-                        onClick={() =>
-                          setSelectedIndex((prev) => ({ ...prev, [pkg.name]: i }))
-                        }
-                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                          idx === i
-                            ? 'bg-yellow-500 text-gray-900'
-                            : 'bg-gray-800 text-gray-400 hover:text-white'
-                        }`}
-                      >
-                        {option.tokens}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <ul className="mb-8 space-y-3">
-                  {pkg.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
-                      <span className="text-yellow-500 font-bold text-sm">&#10003;</span>
-                      <span className="text-sm text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  href="/demo-request"
-                  className={`block w-full py-3 rounded-lg text-center text-sm font-semibold transition-colors ${
-                    pkg.featured
-                      ? 'bg-yellow-500 text-gray-900 hover:bg-yellow-400'
-                      : 'border border-gray-700 text-white hover:border-yellow-500 hover:text-yellow-500'
-                  }`}
-                >
-                  Get Started
-                </Link>
-              </div>
-            );
-          })}
+                Get Started
+              </Link>
+            </div>
+          ))}
         </div>
 
         {/* Feature Comparison Table */}
-        <h2 className="text-2xl font-bold text-white mb-6">
-          Every Plan Includes
-        </h2>
+        <h2 className="text-2xl font-bold text-white mb-6">Plan Comparison</h2>
 
         <div className="overflow-x-auto">
-          <table className="w-full bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
+          <table className="w-full bg-gray-900 rounded-lg overflow-hidden border border-gray-800 text-sm">
             <thead>
               <tr className="bg-gray-800">
-                <th className="px-6 py-4 text-left text-sm font-semibold text-white">Feature</th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-white">Starter</th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-yellow-500">Professional</th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-white">Enterprise</th>
+                <th className="px-6 py-4 text-left font-semibold text-white">Feature</th>
+                {tiers.map((tier) => (
+                  <th
+                    key={tier.name}
+                    className={`px-4 py-4 text-center font-semibold ${
+                      tier.featured ? 'text-yellow-500' : 'text-white'
+                    }`}
+                  >
+                    {tier.name}
+                  </th>
+                ))}
+              </tr>
+              <tr className="bg-gray-850 border-t border-gray-800">
+                <td className="px-6 py-2 text-xs text-gray-500">Monthly price</td>
+                {tiers.map((tier) => (
+                  <td key={tier.name} className={`px-4 py-2 text-center text-xs font-medium ${tier.featured ? 'bg-yellow-500/5 text-yellow-400' : 'text-gray-300'}`}>
+                    ${tier.price.toLocaleString()}
+                  </td>
+                ))}
               </tr>
             </thead>
             <tbody>
-              {comparisonFeatures.map((feature, index) => (
+              {comparisonRows.map((row, index) => (
                 <tr key={index} className="border-t border-gray-800">
-                  <td className="px-6 py-4 text-sm text-gray-300">{feature.name}</td>
-                  <td className="px-6 py-4 text-center">
-                    {feature.starter ? (
-                      <span className="text-green-500 font-bold">&#10003;</span>
-                    ) : (
-                      <span className="text-gray-600">—</span>
-                    )}
-                  </td>
-                  <td className="px-6 py-4 text-center bg-yellow-500/5">
-                    {feature.professional ? (
-                      <span className="text-green-500 font-bold">&#10003;</span>
-                    ) : (
-                      <span className="text-gray-600">—</span>
-                    )}
-                  </td>
-                  <td className="px-6 py-4 text-center">
-                    {feature.enterprise ? (
-                      <span className="text-green-500 font-bold">&#10003;</span>
-                    ) : (
-                      <span className="text-gray-600">—</span>
-                    )}
-                  </td>
+                  <td className="px-6 py-3 text-gray-300">{row.label}</td>
+                  {row.values.map((val, i) => (
+                    <td
+                      key={i}
+                      className={`px-4 py-3 text-center ${tiers[i].featured ? 'bg-yellow-500/5' : ''}`}
+                    >
+                      {val ? (
+                        <span className="text-green-500 font-bold">&#10003;</span>
+                      ) : (
+                        <span className="text-gray-600">—</span>
+                      )}
+                    </td>
+                  ))}
                 </tr>
               ))}
             </tbody>
