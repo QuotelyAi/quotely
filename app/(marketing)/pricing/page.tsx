@@ -5,6 +5,7 @@ interface Tier {
   price: number;
   description: string;
   featured?: boolean;
+  bestValue?: boolean;
   features: string[];
   quad: string;
 }
@@ -14,6 +15,7 @@ const tiers: Tier[] = [
     name: 'Connect',
     price: 299,
     description: 'Everything you need to get started with AI-powered quoting.',
+    bestValue: true,
     features: [
       'TurboRater (200+ carriers)',
       'QUAD AI — web chat + voice',
@@ -111,6 +113,13 @@ export default function PricingPage() {
                   : 'border-gray-800 bg-gray-900'
               }`}
             >
+              {tier.bestValue && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="rounded-full bg-yellow-500 px-3 py-1 text-xs font-semibold text-gray-900 whitespace-nowrap">
+                    Best Value
+                  </span>
+                </div>
+              )}
               {tier.featured && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <span className="rounded-full bg-yellow-500 px-3 py-1 text-xs font-semibold text-gray-900 whitespace-nowrap">
