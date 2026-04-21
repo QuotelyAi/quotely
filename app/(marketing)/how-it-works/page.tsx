@@ -63,7 +63,7 @@ const pillars = [
 
 export default function HowItWorksPage() {
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-200">
       <section className="bg-gradient-to-br from-primary-800 to-primary-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">How Quotely Works</h1>
@@ -81,18 +81,18 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-950">
+      <section className="py-16 bg-white dark:bg-gray-950">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-8">
             {steps.map((step) => (
               <div
                 key={step.number}
-                className="flex flex-col md:flex-row gap-6 bg-gray-900 border border-gray-800 rounded-lg p-8"
+                className="flex flex-col md:flex-row gap-6 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-8"
               >
                 <div className="text-yellow-500 text-5xl font-bold md:w-24 shrink-0">{step.number}</div>
                 <div>
-                  <h2 className="text-2xl font-bold text-white mb-3">{step.title}</h2>
-                  <p className="text-gray-300 text-lg leading-relaxed">{step.body}</p>
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">{step.title}</h2>
+                  <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">{step.body}</p>
                 </div>
               </div>
             ))}
@@ -100,11 +100,11 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-900">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Four products, one platform</h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Four products, one platform</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Use them together or drop Quotely in alongside your existing stack. Pricing is flat — everything included.
             </p>
           </div>
@@ -115,11 +115,11 @@ export default function HowItWorksPage() {
                 <Link
                   key={pillar.title}
                   href={pillar.href}
-                  className="bg-gray-950 p-8 rounded-lg border border-gray-800 hover:border-yellow-500 transition-colors block"
+                  className="bg-white dark:bg-gray-950 p-8 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-yellow-500 transition-colors block"
                 >
                   <Icon className="w-8 h-8 text-yellow-500 mb-4" />
-                  <h3 className="text-xl font-bold text-white mb-2">{pillar.title}</h3>
-                  <p className="text-gray-400 mb-3">{pillar.body}</p>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{pillar.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-3">{pillar.body}</p>
                   <span className="text-yellow-500 text-sm font-medium inline-flex items-center gap-1">
                     Learn more <ArrowRight size={14} />
                   </span>

@@ -84,7 +84,7 @@ const faqs: FAQItem[] = [
   },
 ];
 
-// Generate FAQ Schema for SEO
+// Generate FAQ Schema for SEO - content is static and trusted
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -111,20 +111,21 @@ export default function FAQPage() {
 
   return (
     <>
-      {/* FAQ Schema */}
+      {/* FAQ Schema - static trusted content only */}
       <Script
         id="faq-schema"
         type="application/ld+json"
+        // nosec - static trusted schema data, not user input
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <div className="min-h-screen bg-gray-950 py-12">
+      <div className="min-h-screen bg-white dark:bg-gray-950 py-12 transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
               Frequently Asked Questions
             </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
               Find answers to common questions about Quotely
             </p>
           </div>
@@ -143,22 +144,22 @@ export default function FAQPage() {
                       return (
                         <div
                           key={globalIndex}
-                          className="bg-gray-900 rounded-lg overflow-hidden border border-gray-800"
+                          className="bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800"
                         >
                           <button
                             onClick={() => toggleItem(globalIndex)}
-                            className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-800 transition-colors"
+                            className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
                           >
-                            <span className="font-medium text-white">{faq.question}</span>
+                            <span className="font-medium text-gray-900 dark:text-white">{faq.question}</span>
                             {isOpen ? (
-                              <ChevronUp className="text-gray-400 flex-shrink-0 ml-4" size={20} />
+                              <ChevronUp className="text-gray-600 dark:text-gray-400 flex-shrink-0 ml-4" size={20} />
                             ) : (
-                              <ChevronDown className="text-gray-400 flex-shrink-0 ml-4" size={20} />
+                              <ChevronDown className="text-gray-600 dark:text-gray-400 flex-shrink-0 ml-4" size={20} />
                             )}
                           </button>
                           {isOpen && (
                             <div className="px-6 pb-4">
-                              <p className="text-gray-300">{faq.answer}</p>
+                              <p className="text-gray-700 dark:text-gray-300">{faq.answer}</p>
                             </div>
                           )}
                         </div>

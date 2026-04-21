@@ -91,11 +91,11 @@ export default function CalculatorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 py-12">
+    <div className="min-h-screen bg-white dark:bg-gray-950 py-12 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">ROI Calculator</h1>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">ROI Calculator</h1>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             See how much additional revenue Quotely can generate for your agency
           </p>
         </div>
@@ -103,70 +103,70 @@ export default function CalculatorPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Input Section */}
           <div>
-            <div className="bg-gray-900 rounded-lg border border-gray-800 p-8">
-              <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
+            <div className="bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 p-8">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                 <CalcIcon className="mr-2 text-yellow-500" />
                 Your Agency Details
               </h2>
 
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Number of Agents
                   </label>
                   <input
                     type="number"
                     value={calculatorData.numAgents}
                     onChange={(e) => handleInputChange('numAgents', e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800 text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Quotes per Agent (Weekly)
                   </label>
                   <input
                     type="number"
                     value={calculatorData.quotesPerAgent}
                     onChange={(e) => handleInputChange('quotesPerAgent', e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800 text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Current Conversion Rate (%)
                   </label>
                   <input
                     type="number"
                     value={calculatorData.conversionRate}
                     onChange={(e) => handleInputChange('conversionRate', e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800 text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Average Premium ($)
                   </label>
                   <input
                     type="number"
                     value={calculatorData.averagePremium}
                     onChange={(e) => handleInputChange('averagePremium', e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800 text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Commission Rate (%)
                   </label>
                   <input
                     type="number"
                     value={calculatorData.commissionRate}
                     onChange={(e) => handleInputChange('commissionRate', e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800 text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                   />
                 </div>
               </div>
@@ -176,18 +176,18 @@ export default function CalculatorPage() {
           {/* Results Section */}
           <div className="space-y-6">
             {/* Current Performance */}
-            <div className="bg-gray-900 rounded-lg border border-gray-800 p-6">
-              <h3 className="text-lg font-semibold text-white mb-4">Current Performance</h3>
+            <div className="bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 p-6">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Current Performance</h3>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-sm text-gray-400">Monthly Policies</p>
-                  <p className="text-2xl font-bold text-white">
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Monthly Policies</p>
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
                     {Math.round(calculations.current.monthlyPolicies)}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-400">Yearly Commission</p>
-                  <p className="text-2xl font-bold text-white">
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Yearly Commission</p>
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
                     {formatCurrency(calculations.current.yearlyCommission)}
                   </p>
                 </div>
@@ -196,16 +196,16 @@ export default function CalculatorPage() {
 
             {/* With Quotely */}
             <div className="bg-primary-900/50 border-2 border-primary-600 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-4">With Quotely</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">With Quotely</h3>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-sm text-gray-300">Monthly Policies</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">Monthly Policies</p>
                   <p className="text-2xl font-bold text-yellow-500">
                     {Math.round(calculations.withQuotely.monthlyPolicies)}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-300">Yearly Commission</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">Yearly Commission</p>
                   <p className="text-2xl font-bold text-yellow-500">
                     {formatCurrency(calculations.withQuotely.yearlyCommission)}
                   </p>
@@ -215,7 +215,7 @@ export default function CalculatorPage() {
 
             {/* ROI Summary */}
             <div className="bg-green-900/30 border-2 border-green-600 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                 <TrendingUp className="mr-2 text-green-500" />
                 Your ROI with Quotely
               </h3>
@@ -241,8 +241,8 @@ export default function CalculatorPage() {
             </div>
 
             {/* CTA */}
-            <div className="bg-gray-900 rounded-lg border border-gray-800 p-6 text-center">
-              <h3 className="text-xl font-bold text-white mb-4">Ready to boost your revenue?</h3>
+            <div className="bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 p-6 text-center">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Ready to boost your revenue?</h3>
               <Link
                 href="/demo-request"
                 className="inline-flex items-center justify-center w-full px-6 py-3 bg-yellow-500 text-gray-900 font-semibold rounded-lg hover:bg-yellow-400 transition-colors"

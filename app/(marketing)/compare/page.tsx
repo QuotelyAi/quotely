@@ -60,58 +60,58 @@ const renderValue = (value: boolean | string) => {
       <span className="text-gray-600">—</span>
     );
   }
-  return <span className="text-white font-medium">{value}</span>;
+  return <span className="text-gray-900 dark:text-white font-medium">{value}</span>;
 };
 
 export default function ComparePage() {
   return (
-    <div className="min-h-screen bg-gray-950 py-16">
+    <div className="min-h-screen bg-white dark:bg-gray-950 py-16 transition-colors duration-200">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Compare Plans
           </h1>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Every plan includes the full Quotely platform. The only difference is how many tokens you need.
           </p>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
+          <table className="w-full bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800">
             <thead>
-              <tr className="bg-gray-800">
-                <th className="px-6 py-4 text-left text-sm font-semibold text-white">Features</th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-white">
+              <tr className="bg-gray-200 dark:bg-gray-800">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Features</th>
+                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900 dark:text-white">
                   <div>Starter</div>
-                  <div className="text-xl font-bold text-white mt-1">$999/mo</div>
-                  <div className="text-xs text-gray-400">50 tokens included</div>
+                  <div className="text-xl font-bold text-gray-900 dark:text-white mt-1">$999/mo</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400">50 tokens included</div>
                 </th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-white bg-yellow-500/10">
+                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900 dark:text-white bg-yellow-500/10">
                   <div className="flex items-center justify-center gap-2">
                     Professional
                     <span className="bg-yellow-500 text-gray-900 text-xs px-2 py-0.5 rounded font-bold">Popular</span>
                   </div>
                   <div className="text-xl font-bold text-yellow-500 mt-1">$1,799/mo</div>
-                  <div className="text-xs text-gray-400">250 tokens included</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400">250 tokens included</div>
                 </th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-white">
+                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900 dark:text-white">
                   <div>Enterprise</div>
-                  <div className="text-xl font-bold text-white mt-1">$2,399/mo</div>
-                  <div className="text-xs text-gray-400">500 tokens included</div>
+                  <div className="text-xl font-bold text-gray-900 dark:text-white mt-1">$2,399/mo</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400">500 tokens included</div>
                 </th>
               </tr>
             </thead>
             <tbody>
               {features.map((category, categoryIndex) => (
                 <React.Fragment key={categoryIndex}>
-                  <tr className="bg-gray-800/50">
+                  <tr className="bg-gray-100/50 dark:bg-gray-800/50">
                     <td colSpan={4} className="px-6 py-3 text-sm font-semibold text-yellow-500">
                       {category.category}
                     </td>
                   </tr>
                   {category.items.map((feature, featureIndex) => (
-                    <tr key={featureIndex} className="border-t border-gray-800">
-                      <td className="px-6 py-4 text-sm text-gray-300">{feature.name}</td>
+                    <tr key={featureIndex} className="border-t border-gray-200 dark:border-gray-800">
+                      <td className="px-6 py-4 text-sm text-gray-700 dark:text-gray-300">{feature.name}</td>
                       <td className="px-6 py-4 text-center">{renderValue(feature.starter)}</td>
                       <td className="px-6 py-4 text-center bg-yellow-500/5">
                         {renderValue(feature.professional)}
@@ -123,10 +123,10 @@ export default function ComparePage() {
               ))}
             </tbody>
             <tfoot>
-              <tr className="bg-gray-800">
+              <tr className="bg-gray-200 dark:bg-gray-800">
                 <td className="px-6 py-4"></td>
                 <td className="px-6 py-4 text-center">
-                  <Link href="/demo-request" className="inline-block px-6 py-2 border border-gray-600 text-white rounded-lg hover:border-yellow-500 hover:text-yellow-500 transition-colors text-sm font-semibold">
+                  <Link href="/demo-request" className="inline-block px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg hover:border-yellow-500 hover:text-yellow-500 transition-colors text-sm font-semibold">
                     Get Started
                   </Link>
                 </td>
@@ -136,7 +136,7 @@ export default function ComparePage() {
                   </Link>
                 </td>
                 <td className="px-6 py-4 text-center">
-                  <Link href="/demo-request" className="inline-block px-6 py-2 border border-gray-600 text-white rounded-lg hover:border-yellow-500 hover:text-yellow-500 transition-colors text-sm font-semibold">
+                  <Link href="/demo-request" className="inline-block px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg hover:border-yellow-500 hover:text-yellow-500 transition-colors text-sm font-semibold">
                     Get Started
                   </Link>
                 </td>

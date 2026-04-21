@@ -61,15 +61,15 @@ const sections = [
 
 export default function DocumentationPage() {
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-200">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-900 to-gray-950 py-20 border-b border-gray-800">
+      <section className="bg-gradient-to-br from-gray-50 dark:from-gray-900 to-white dark:to-gray-950 py-20 border-b border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
               Documentation
             </h1>
-            <p className="text-xl md:text-2xl text-gray-400 mb-8">
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8">
               Everything you need to master Quotely
             </p>
             <div className="max-w-2xl mx-auto">
@@ -77,7 +77,7 @@ export default function DocumentationPage() {
                 <input
                   type="text"
                   placeholder="Search documentation..."
-                  className="w-full px-6 py-4 rounded-lg bg-gray-800 border border-gray-700 text-white text-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 placeholder-gray-500"
+                  className="w-full px-6 py-4 rounded-lg bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white text-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 placeholder-gray-500"
                 />
               </div>
             </div>
@@ -94,20 +94,20 @@ export default function DocumentationPage() {
               return (
                 <div
                   key={index}
-                  className="bg-gray-900 border-2 border-gray-800 rounded-lg p-8 hover:border-yellow-500/50 transition-all"
+                  className="bg-gray-50 dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-800 rounded-lg p-8 hover:border-yellow-500/50 transition-all"
                 >
                   <div className="text-yellow-500 mb-4">
                     <IconComponent className="w-8 h-8" />
                   </div>
-                  <h2 className="text-2xl font-bold text-white mb-3">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
                     {section.title}
                   </h2>
-                  <p className="text-gray-400 mb-6">
+                  <p className="text-gray-600 dark:text-gray-400 mb-6">
                     {section.description}
                   </p>
                   <ul className="space-y-3 mb-6">
                     {section.topics.map((topic, topicIndex) => (
-                      <li key={topicIndex} className="flex items-center text-gray-300">
+                      <li key={topicIndex} className="flex items-center text-gray-700 dark:text-gray-300">
                         <ArrowRight className="w-4 h-4 mr-2 text-yellow-500" />
                         {topic}
                       </li>
@@ -134,13 +134,13 @@ export default function DocumentationPage() {
       </section>
 
       {/* Coming Soon Notice */}
-      <section className="py-16 bg-gray-900/50">
+      <section className="py-16 bg-gray-50/50 dark:bg-gray-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-white mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
               Documentation In Development
             </h2>
-            <p className="text-xl text-gray-400 mb-8">
+            <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
               Our comprehensive documentation is being developed alongside the platform launch.
               Auto Insurance documentation will be available with the launch, followed by
               Home Insurance documentation shortly after.
@@ -158,11 +158,11 @@ export default function DocumentationPage() {
       {/* Support CTA */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-8 text-center border border-gray-700">
-            <h2 className="text-2xl font-bold text-white mb-4">
+          <div className="max-w-4xl mx-auto bg-gradient-to-br from-gray-200 dark:from-gray-800 to-gray-50 dark:to-gray-900 rounded-xl p-8 text-center border border-gray-300 dark:border-gray-700">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Need Help?
             </h2>
-            <p className="text-lg text-gray-300 mb-6">
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
               Our support team is here to help you succeed with Quotely
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -174,7 +174,7 @@ export default function DocumentationPage() {
               </Link>
               <Link
                 href="/demo-request"
-                className="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
+                className="inline-flex items-center justify-center px-8 py-3 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white font-semibold rounded-lg hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-gray-900 transition-colors"
               >
                 Schedule Demo
               </Link>

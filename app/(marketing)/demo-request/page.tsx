@@ -57,20 +57,20 @@ Timestamp: ${new Date().toLocaleString()}
 
   if (submitted) {
     return (
-      <div className="min-h-screen py-12 bg-gray-950">
+      <div className="min-h-screen py-12 bg-white dark:bg-gray-950 transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto">
-            <div className="bg-gray-900 rounded-xl shadow-lg p-8 text-center border border-gray-800">
+            <div className="bg-gray-50 dark:bg-gray-900 rounded-xl shadow-lg p-8 text-center border border-gray-200 dark:border-gray-800">
               <div className="w-16 h-16 bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Check className="w-10 h-10 text-green-500" />
               </div>
-              <h1 className="text-3xl font-bold text-white mb-4">
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 Thank You!
               </h1>
-              <p className="text-xl text-gray-300 mb-6">
+              <p className="text-xl text-gray-700 dark:text-gray-300 mb-6">
                 Your request has been submitted. Your default email client should have opened with a pre-filled message to <strong className="text-yellow-500">support@tryquotely.com</strong>.
               </p>
-              <p className="text-gray-400 mb-8">
+              <p className="text-gray-600 dark:text-gray-400 mb-8">
                 If the email didn&apos;t open automatically, please send your request details directly to support@tryquotely.com and we&apos;ll get back to you within 1 business day.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -92,31 +92,31 @@ Timestamp: ${new Date().toLocaleString()}
   }
 
   return (
-    <div className="min-h-screen py-12 bg-gray-950">
+    <div className="min-h-screen py-12 bg-white dark:bg-gray-950 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Back Button */}
-          <Link href="/" className="inline-flex items-center text-gray-400 hover:text-white mb-6">
+          <Link href="/" className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-6">
             <ArrowLeft className="mr-2" size={20} />
             Back to Home
           </Link>
 
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
               Let&apos;s Get Started
             </h1>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-gray-600 dark:text-gray-400">
               Fill out the form below and we&apos;ll get back to you within 1 business day
             </p>
           </div>
 
           {/* Form */}
-          <div className="bg-gray-900 rounded-xl shadow-lg p-8 border border-gray-800">
+          <div className="bg-gray-50 dark:bg-gray-900 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-800">
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Interest Type */}
               <div>
-                <label className="block text-sm font-medium text-white mb-2">
+                <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                   I&apos;m interested in *
                 </label>
                 <select
@@ -124,7 +124,7 @@ Timestamp: ${new Date().toLocaleString()}
                   value={formData.interest}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800 text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                 >
                   <option value="demo">Scheduling a Demo</option>
                   <option value="pricing">Getting Pricing Information</option>
@@ -136,7 +136,7 @@ Timestamp: ${new Date().toLocaleString()}
               {/* Name and Email */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">
+                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                     Full Name *
                   </label>
                   <input
@@ -146,11 +146,11 @@ Timestamp: ${new Date().toLocaleString()}
                     onChange={handleChange}
                     placeholder="John Smith"
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800 text-white placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">
+                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                     Email Address *
                   </label>
                   <input
@@ -160,7 +160,7 @@ Timestamp: ${new Date().toLocaleString()}
                     onChange={handleChange}
                     placeholder="john@agency.com"
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800 text-white placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                   />
                 </div>
               </div>
@@ -168,7 +168,7 @@ Timestamp: ${new Date().toLocaleString()}
               {/* Company and Phone */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">
+                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                     Company / Agency Name
                   </label>
                   <input
@@ -177,11 +177,11 @@ Timestamp: ${new Date().toLocaleString()}
                     value={formData.company}
                     onChange={handleChange}
                     placeholder="ABC Insurance Agency"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800 text-white placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">
+                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                     Phone Number
                   </label>
                   <input
@@ -190,7 +190,7 @@ Timestamp: ${new Date().toLocaleString()}
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="(555) 123-4567"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800 text-white placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                   />
                 </div>
               </div>
@@ -198,14 +198,14 @@ Timestamp: ${new Date().toLocaleString()}
               {/* Agency Size and Quote Volume */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">
+                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                     Agency Size
                   </label>
                   <select
                     name="agencySize"
                     value={formData.agencySize}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800 text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                   >
                     <option value="">Select team size</option>
                     <option value="1-5">1-5 employees</option>
@@ -215,14 +215,14 @@ Timestamp: ${new Date().toLocaleString()}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">
+                  <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                     Monthly Quote Volume
                   </label>
                   <select
                     name="quoteVolume"
                     value={formData.quoteVolume}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800 text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                   >
                     <option value="">Estimate monthly quotes</option>
                     <option value="0-50">0-50 quotes</option>
@@ -235,7 +235,7 @@ Timestamp: ${new Date().toLocaleString()}
 
               {/* Message */}
               <div>
-                <label className="block text-sm font-medium text-white mb-2">
+                <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                   Message / Additional Details
                 </label>
                 <textarea
@@ -244,7 +244,7 @@ Timestamp: ${new Date().toLocaleString()}
                   onChange={handleChange}
                   rows={5}
                   placeholder="Tell us about your needs, current systems, or any questions you have..."
-                  className="w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800 text-white placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                 ></textarea>
               </div>
 
@@ -266,7 +266,7 @@ Timestamp: ${new Date().toLocaleString()}
 
           {/* Contact Info */}
           <div className="mt-8 text-center">
-            <p className="text-gray-400">
+            <p className="text-gray-600 dark:text-gray-400">
               Prefer to email directly? Reach us at{' '}
               <a href="mailto:support@tryquotely.com" className="text-yellow-500 hover:text-yellow-400 font-medium">
                 support@tryquotely.com

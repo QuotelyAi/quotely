@@ -17,14 +17,14 @@ export default function PrivacyPage() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-950 py-12">
+    <div className="min-h-screen bg-white dark:bg-gray-950 py-12 transition-colors duration-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold text-white mb-8">Privacy Policy</h1>
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Privacy Policy</h1>
 
-        <div className="bg-gray-900 rounded-lg border border-gray-800 p-8 space-y-6">
+        <div className="bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 p-8 space-y-6">
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-4">Introduction</h2>
-            <p className="text-gray-300 leading-relaxed">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Introduction</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               At Quotely, Inc. DBA &quot;Try Quotely&quot;, we take your privacy seriously. This
               Privacy Policy explains how we collect, use, disclose, and safeguard your
               information when you use our platform.
@@ -32,11 +32,11 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-4">Information We Collect</h2>
-            <p className="text-gray-300 leading-relaxed mb-3">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Information We Collect</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
               We collect information that you provide directly to us, including:
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-gray-300">
+            <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
               <li>Name, email address, and contact information</li>
               <li>Agency information and business details</li>
               <li>Insurance quoting data and carrier information</li>
@@ -45,13 +45,13 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-4">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
               How We Use Your Information
             </h2>
-            <p className="text-gray-300 leading-relaxed mb-3">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
               We use the information we collect to:
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-gray-300">
+            <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
               <li>Provide, maintain, and improve our services</li>
               <li>Process insurance quotes and carrier integrations</li>
               <li>Communicate with you about our services</li>
@@ -61,8 +61,8 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-4">Data Security</h2>
-            <p className="text-gray-300 leading-relaxed">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Data Security</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               We implement appropriate technical and organizational security measures to protect
               your personal information. Our platform is SOC 2 compliant and uses
               industry-standard encryption.
@@ -70,8 +70,8 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-4">Data Retention</h2>
-            <p className="text-gray-300 leading-relaxed">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Data Retention</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               We retain your personal information for as long as necessary to provide our
               services and fulfill the purposes described in this policy, unless a longer
               retention period is required by law.
@@ -79,9 +79,9 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-4">Your Rights</h2>
-            <p className="text-gray-300 leading-relaxed mb-3">You have the right to:</p>
-            <ul className="list-disc pl-6 space-y-2 text-gray-300">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Your Rights</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">You have the right to:</p>
+            <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
               <li>Access your personal information</li>
               <li>Correct inaccurate data</li>
               <li>Request deletion of your data</li>
@@ -91,11 +91,11 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-4">Contact Us</h2>
-            <p className="text-gray-300 leading-relaxed">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Contact Us</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               If you have any questions about this Privacy Policy, please contact us at:
             </p>
-            <p className="text-gray-300 mt-2">
+            <p className="text-gray-700 dark:text-gray-300 mt-2">
               Email:{' '}
               <a
                 href="mailto:support@tryquotely.com"
@@ -111,7 +111,7 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          <section className="pt-6 border-t border-gray-700">
+          <section className="pt-6 border-t border-gray-300 dark:border-gray-700">
             <p className="text-sm text-gray-500">Last Updated: {currentDate}</p>
           </section>
         </div>

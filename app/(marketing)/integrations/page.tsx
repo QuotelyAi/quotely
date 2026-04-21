@@ -119,7 +119,7 @@ const features = [
 
 export default function IntegrationsPage() {
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-200">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary-800 to-primary-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -141,13 +141,13 @@ export default function IntegrationsPage() {
       </section>
 
       {/* Integration Categories */}
-      <section className="py-16 bg-gray-950">
+      <section className="py-16 bg-white dark:bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
               Integration Partners
             </h2>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-gray-600 dark:text-gray-400">
               Connect with the tools you already use
             </p>
           </div>
@@ -156,20 +156,20 @@ export default function IntegrationsPage() {
             {integrationCategories.map((category, index) => (
               <div
                 key={index}
-                className="bg-gray-900 p-8 rounded-lg border border-gray-800"
+                className="bg-gray-50 dark:bg-gray-900 p-8 rounded-lg border border-gray-200 dark:border-gray-800"
               >
                 <h3 className="text-xl font-bold text-yellow-500 mb-3">
                   {category.title}
                 </h3>
-                <p className="text-gray-400 mb-4">
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
                   {category.description}
                 </p>
                 <div className="space-y-3">
                   {category.partners.map((partner, i) => (
-                    <div key={i} className="text-gray-300 text-sm">
+                    <div key={i} className="text-gray-700 dark:text-gray-300 text-sm">
                       <div className="flex items-center gap-2">
                         <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full shrink-0"></div>
-                        <span className="font-medium text-white">{partner.name}</span>
+                        <span className="font-medium text-gray-900 dark:text-white">{partner.name}</span>
                         {partner.badge && (
                           <span className="ml-1 text-[10px] uppercase tracking-wide text-gray-900 bg-yellow-500 px-2 py-0.5 rounded font-semibold">
                             {partner.badge}
@@ -177,7 +177,7 @@ export default function IntegrationsPage() {
                         )}
                       </div>
                       {partner.note && (
-                        <div className="pl-3.5 text-gray-400 text-xs mt-0.5">{partner.note}</div>
+                        <div className="pl-3.5 text-gray-600 dark:text-gray-400 text-xs mt-0.5">{partner.note}</div>
                       )}
                     </div>
                   ))}
@@ -189,10 +189,10 @@ export default function IntegrationsPage() {
       </section>
 
       {/* Features */}
-      <section className="py-16 bg-gray-900">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
               Integration Features
             </h2>
           </div>
@@ -206,8 +206,8 @@ export default function IntegrationsPage() {
                     <Icon className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
-                    <p className="text-gray-400">{feature.description}</p>
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{feature.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
                   </div>
                 </div>
               );
