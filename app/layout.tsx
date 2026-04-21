@@ -4,6 +4,7 @@ import { GoogleTagManager } from '@next/third-parties/google'
 import './globals.css'
 import Analytics from '@/components/Analytics'
 import { Header, Footer } from '@/components/layout'
+import { ThemeProvider } from '@/components/ThemeProvider'
 import { organizationSchema, websiteSchema, softwareApplicationSchema, localBusinessSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
@@ -88,7 +89,7 @@ export default function RootLayout({
           async
         />
       </head>
-      <body className="bg-gray-950 text-white min-h-screen flex flex-col">
+      <body className="bg-white dark:bg-gray-950 text-gray-900 dark:text-white min-h-screen flex flex-col transition-colors duration-200">
         {/* Microsoft Clarity - Heatmaps & Session Recording */}
         {process.env.NEXT_PUBLIC_CLARITY_ID && (
           <Script
@@ -126,12 +127,14 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
-        <Analytics />
-        <Header />
-        <main className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        <ThemeProvider>
+          <Analytics />
+          <Header />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

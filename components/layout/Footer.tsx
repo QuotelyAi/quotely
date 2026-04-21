@@ -93,25 +93,25 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-950 text-white border-t border-gray-800">
+    <footer className="bg-white dark:bg-gray-950 text-gray-900 dark:text-white border-t border-gray-200 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <h3 className="text-2xl font-bold mb-4 text-yellow-500">Quotely</h3>
-            <p className="text-gray-400 mb-6">
+            <p className="text-gray-600 dark:text-gray-400 mb-6">
               Revolutionizing insurance quoting with AI-powered solutions for agencies.
             </p>
 
             {/* Social Media Links */}
             <div className="mb-4">
-              <h4 className="text-sm font-semibold text-gray-300 mb-3">Follow Us</h4>
+              <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Follow Us</h4>
               <div className="flex flex-wrap gap-3">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
                     href={social.url}
                     title={social.name}
-                    className="text-gray-400 hover:text-yellow-500 transition-colors p-2 bg-gray-900 rounded-lg hover:bg-gray-800"
+                    className="text-gray-500 dark:text-gray-400 hover:text-yellow-500 transition-colors p-2 bg-gray-100 dark:bg-gray-900 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -126,37 +126,37 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/pricing" className="text-gray-400 hover:text-yellow-500 transition-colors">
+                <Link href="/pricing" className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition-colors">
                   Pricing
                 </Link>
               </li>
               <li>
-                <Link href="/calculator" className="text-gray-400 hover:text-yellow-500 transition-colors">
+                <Link href="/calculator" className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition-colors">
                   ROI Calculator
                 </Link>
               </li>
               <li>
-                <Link href="/compare" className="text-gray-400 hover:text-yellow-500 transition-colors">
+                <Link href="/compare" className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition-colors">
                   Compare Plans
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="text-gray-400 hover:text-yellow-500 transition-colors">
+                <Link href="/faq" className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition-colors">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-gray-400 hover:text-yellow-500 transition-colors">
+                <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition-colors">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/documentation" className="text-gray-400 hover:text-yellow-500 transition-colors">
+                <Link href="/documentation" className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition-colors">
                   Documentation
                 </Link>
               </li>
               <li>
-                <Link href="/status" className="text-gray-400 hover:text-yellow-500 transition-colors">
+                <Link href="/status" className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition-colors">
                   System Status
                 </Link>
               </li>
@@ -166,19 +166,19 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-2">
-              <li className="flex items-center text-gray-400">
+              <li className="flex items-center text-gray-600 dark:text-gray-400">
                 <Mail size={16} className="mr-2" />
                 <a href="mailto:support@tryquotely.com" className="hover:text-yellow-500 transition-colors">
                   support@tryquotely.com
                 </a>
               </li>
-              <li className="flex items-center text-gray-400">
+              <li className="flex items-center text-gray-600 dark:text-gray-400">
                 <Phone size={16} className="mr-2" />
                 <a href="tel:+19183956335" className="hover:text-yellow-500 transition-colors">
                   (918) 395-6335
                 </a>
               </li>
-              <li className="flex items-start text-gray-400">
+              <li className="flex items-start text-gray-600 dark:text-gray-400">
                 <MapPin size={16} className="mr-2 mt-1" />
                 <span>
                   6010 S. 66th E. Ave<br />
@@ -190,7 +190,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-gray-500 dark:text-gray-400">
           <p>&copy; {currentYear} Quotely, Inc. DBA &quot;Try Quotely&quot;. All rights reserved.</p>
           <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1">
             <Link href="/privacy" className="hover:text-yellow-500 transition-colors">

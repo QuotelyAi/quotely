@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown, Search } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,7 +55,7 @@ const Header = () => {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <header className="bg-gray-950 border-b border-gray-800 sticky top-0 z-50">
+    <header className="bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -73,18 +74,18 @@ const Header = () => {
               onMouseLeave={handleProductsMouseLeave}
             >
               <button
-                className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 flex items-center gap-1"
+                className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 flex items-center gap-1"
               >
                 Products
                 <ChevronDown size={14} className={`transition-transform duration-200 ${productsDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               {productsDropdownOpen && (
-                <div className="absolute left-0 mt-2 w-64 bg-gray-900 rounded-lg shadow-xl border border-gray-800 py-2 z-50">
+                <div className="absolute left-0 mt-2 w-64 bg-white dark:bg-gray-900 rounded-lg shadow-xl border border-gray-200 dark:border-gray-800 py-2 z-50">
                   {productsMenu.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="block px-4 py-3 text-sm text-gray-300 hover:bg-gray-800 hover:text-yellow-500 transition-colors"
+                      className="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-yellow-500 transition-colors"
                       onClick={() => setProductsDropdownOpen(false)}
                     >
                       <div className="font-semibold">{item.name}</div>
@@ -102,18 +103,18 @@ const Header = () => {
               onMouseLeave={handlePricingMouseLeave}
             >
               <button
-                className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 flex items-center gap-1"
+                className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 flex items-center gap-1"
               >
                 Pricing
                 <ChevronDown size={14} className={`transition-transform duration-200 ${pricingDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               {pricingDropdownOpen && (
-                <div className="absolute left-0 mt-2 w-48 bg-gray-900 rounded-lg shadow-xl border border-gray-800 py-2 z-50">
+                <div className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-900 rounded-lg shadow-xl border border-gray-200 dark:border-gray-800 py-2 z-50">
                   {pricingMenu.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-yellow-500 transition-colors"
+                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-yellow-500 transition-colors"
                       onClick={() => setPricingDropdownOpen(false)}
                     >
                       {item.name}
@@ -152,11 +153,13 @@ const Header = () => {
             </Link>
 
             {/* Search Button */}
-            <button className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-400 bg-gray-800 rounded-lg border border-gray-700 hover:border-gray-600 transition-colors ml-2">
+            <button className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-colors ml-2">
               <Search size={14} />
               <span>Search</span>
               <span className="text-xs text-gray-500 ml-2">⌘K</span>
             </button>
+
+            <ThemeToggle />
 
             {/* See Demo Button */}
             <a
@@ -181,7 +184,7 @@ const Header = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -190,10 +193,10 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-gray-800">
+          <div className="md:hidden border-t border-gray-200 dark:border-gray-800">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {/* Products Section */}
-              <div className="border-b border-gray-800 pb-2 mb-2">
+              <div className="border-b border-gray-200 dark:border-gray-800 pb-2 mb-2">
                 <div className="px-3 py-2 text-xs font-semibold text-yellow-500 uppercase tracking-wider">
                   Products
                 </div>
@@ -201,7 +204,7 @@ const Header = () => {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block px-6 py-2 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-yellow-500 rounded-md"
+                    className="block px-6 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-yellow-500 rounded-md"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
@@ -210,7 +213,7 @@ const Header = () => {
               </div>
 
               {/* Pricing Section */}
-              <div className="border-b border-gray-800 pb-2 mb-2">
+              <div className="border-b border-gray-200 dark:border-gray-800 pb-2 mb-2">
                 <div className="px-3 py-2 text-xs font-semibold text-yellow-500 uppercase tracking-wider">
                   Pricing
                 </div>
@@ -218,7 +221,7 @@ const Header = () => {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block px-6 py-2 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-yellow-500 rounded-md"
+                    className="block px-6 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-yellow-500 rounded-md"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
@@ -229,21 +232,21 @@ const Header = () => {
               {/* Other Links */}
               <Link
                 href="/how-it-works"
-                className="block px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-yellow-500 rounded-md"
+                className="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-yellow-500 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
                 How It Works
               </Link>
               <Link
                 href="/blog"
-                className="block px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-yellow-500 rounded-md"
+                className="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-yellow-500 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Blog
               </Link>
               <Link
                 href="/contact"
-                className="block px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-yellow-500 rounded-md"
+                className="block px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-yellow-500 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact

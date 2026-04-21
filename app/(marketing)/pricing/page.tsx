@@ -32,8 +32,9 @@ const tiers: Tier[] = [
       'Highest TurboRater quote volume',
       'QUAD AI + SMS channel',
       'Gail Voice AI',
+      'AMS (Momentum AMP)',
+      'CRM + API access',
       'Write to Quotely autonomy',
-      'Token carryover',
     ],
     quad: 'Write to Quotely',
   },
@@ -85,16 +86,15 @@ const comparisonRows = [
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-gray-950 py-16">
+    <div className="min-h-screen bg-white dark:bg-gray-950 py-16 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Simple, Transparent Pricing
           </h1>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Every plan includes the full platform — AMS, CRM, TurboRater, QUAD AI, and Gail Voice.
-            Start at $299 and scale when you&apos;re ready.
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Start with quoting at $299 and add the full platform — AMS, CRM, QUAD AI, and Gail Voice — when you&apos;re ready.
           </p>
         </div>
 
@@ -105,8 +105,8 @@ export default function PricingPage() {
               key={tier.name}
               className={`relative rounded-2xl border p-7 flex flex-col ${
                 tier.featured
-                  ? 'border-yellow-500 bg-gray-900'
-                  : 'border-gray-800 bg-gray-900'
+                  ? 'border-yellow-500 bg-gray-50 dark:bg-gray-900'
+                  : 'border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900'
               }`}
             >
               {tier.bestValue && (
@@ -124,18 +124,18 @@ export default function PricingPage() {
                 </div>
               )}
 
-              <h3 className="text-lg font-semibold text-white">{tier.name}</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{tier.name}</h3>
               <p className="mt-1 text-sm text-gray-500 min-h-[2.5rem]">{tier.description}</p>
 
               <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-bold text-white">
+                <span className="text-4xl font-bold text-gray-900 dark:text-white">
                   ${tier.price.toLocaleString()}
                 </span>
-                <span className="text-sm text-gray-400">/month</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400">/month</span>
               </div>
 
               <div className="mt-2 mb-5">
-                <span className="inline-block rounded-md bg-gray-800 px-2 py-0.5 text-xs text-yellow-400">
+                <span className="inline-block rounded-md bg-gray-200 dark:bg-gray-800 px-2 py-0.5 text-xs text-yellow-600 dark:text-yellow-400">
                   QUAD: {tier.quad}
                 </span>
               </div>
@@ -144,7 +144,7 @@ export default function PricingPage() {
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2">
                     <span className="text-yellow-500 font-bold text-sm mt-0.5">&#10003;</span>
-                    <span className="text-sm text-gray-300">{feature}</span>
+                    <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -154,7 +154,7 @@ export default function PricingPage() {
                 className={`block w-full py-3 rounded-lg text-center text-sm font-semibold transition-colors ${
                   tier.featured
                     ? 'bg-yellow-500 text-gray-900 hover:bg-yellow-400'
-                    : 'border border-gray-700 text-white hover:border-yellow-500 hover:text-yellow-500'
+                    : 'border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white hover:border-yellow-500 hover:text-yellow-600 dark:hover:text-yellow-500'
                 }`}
               >
                 Get Started
@@ -164,28 +164,28 @@ export default function PricingPage() {
         </div>
 
         {/* Feature Comparison Table */}
-        <h2 className="text-2xl font-bold text-white mb-6">Plan Comparison</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Plan Comparison</h2>
 
         <div className="overflow-x-auto">
-          <table className="w-full bg-gray-900 rounded-lg overflow-hidden border border-gray-800 text-sm">
+          <table className="w-full bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 text-sm">
             <thead>
-              <tr className="bg-gray-800">
-                <th className="px-6 py-4 text-left font-semibold text-white">Feature</th>
+              <tr className="bg-gray-100 dark:bg-gray-800">
+                <th className="px-6 py-4 text-left font-semibold text-gray-900 dark:text-white">Feature</th>
                 {tiers.map((tier) => (
                   <th
                     key={tier.name}
                     className={`px-4 py-4 text-center font-semibold ${
-                      tier.featured ? 'text-yellow-500' : 'text-white'
+                      tier.featured ? 'text-yellow-500' : 'text-gray-900 dark:text-white'
                     }`}
                   >
                     {tier.name}
                   </th>
                 ))}
               </tr>
-              <tr className="bg-gray-850 border-t border-gray-800">
+              <tr className="border-t border-gray-200 dark:border-gray-800">
                 <td className="px-6 py-2 text-xs text-gray-500">Monthly price</td>
                 {tiers.map((tier) => (
-                  <td key={tier.name} className={`px-4 py-2 text-center text-xs font-medium ${tier.featured ? 'bg-yellow-500/5 text-yellow-400' : 'text-gray-300'}`}>
+                  <td key={tier.name} className={`px-4 py-2 text-center text-xs font-medium ${tier.featured ? 'bg-yellow-500/5 text-yellow-600 dark:text-yellow-400' : 'text-gray-700 dark:text-gray-300'}`}>
                     ${tier.price.toLocaleString()}
                   </td>
                 ))}
@@ -193,17 +193,17 @@ export default function PricingPage() {
             </thead>
             <tbody>
               {comparisonRows.map((row, index) => (
-                <tr key={index} className="border-t border-gray-800">
-                  <td className="px-6 py-3 text-gray-300">{row.label}</td>
+                <tr key={index} className="border-t border-gray-200 dark:border-gray-800">
+                  <td className="px-6 py-3 text-gray-700 dark:text-gray-300">{row.label}</td>
                   {row.values.map((val, i) => (
                     <td
                       key={i}
                       className={`px-4 py-3 text-center ${tiers[i].featured ? 'bg-yellow-500/5' : ''}`}
                     >
                       {val ? (
-                        <span className="text-green-500 font-bold">&#10003;</span>
+                        <span className="text-green-600 dark:text-green-500 font-bold">&#10003;</span>
                       ) : (
-                        <span className="text-gray-600">—</span>
+                        <span className="text-gray-400 dark:text-gray-600">—</span>
                       )}
                     </td>
                   ))}
