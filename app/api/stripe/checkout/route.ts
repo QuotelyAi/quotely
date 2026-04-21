@@ -5,23 +5,28 @@ import Stripe from 'stripe';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-02-24.acacia',
-  typescript: true,
-});
+let _stripe: Stripe | null = null;
+function getStripe() {
+  if (!_stripe) {
+    _stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+      apiVersion: '2025-02-24.acacia',
+      typescript: true,
+    });
+  }
+  return _stripe;
+}
 
-// Allowlist of price IDs this endpoint will accept.
-// Prevents a malicious caller from passing an arbitrary priceId.
-// Pulled from env so sandbox/live swap is a deploy config change, not a code change.
-const ALLOWED_PRICE_IDS = new Set<string>(
-  [
-    process.env.STRIPE_PRICE_CONNECT,
-    process.env.STRIPE_PRICE_TOKENS_50,
-    process.env.STRIPE_PRICE_TOKENS_200,
-    process.env.STRIPE_PRICE_TOKENS_500,
-    process.env.STRIPE_PRICE_TOKENS_1000,
-  ].filter((id): id is string => Boolean(id)),
-);
+function getAllowedPriceIds() {
+  return new Set<string>(
+    [
+      process.env.STRIPE_PRICE_CONNECT,
+      process.env.STRIPE_PRICE_TOKENS_50,
+      process.env.STRIPE_PRICE_TOKENS_200,
+      process.env.STRIPE_PRICE_TOKENS_500,
+      process.env.STRIPE_PRICE_TOKENS_1000,
+    ].filter((id): id is string => Boolean(id)),
+  );
+}
 
 type CheckoutRequestBody = {
   priceId: string;
@@ -52,6 +57,7 @@ export async function POST(req: NextRequest) {
 
   const { priceId, quantity = 1, customerEmail } = body;
 
+  const ALLOWED_PRICE_IDS = getAllowedPriceIds();
   if (!ALLOWED_PRICE_IDS.has(priceId)) {
     console.error('[checkout] rejected unknown priceId:', priceId);
     return NextResponse.json({ error: 'Unknown price' }, { status: 400 });
@@ -64,6 +70,7 @@ export async function POST(req: NextRequest) {
 
   // Only Connect supports quantity (per-agent seats). Token packs are fixed quantity 1.
   const isConnect = priceId === process.env.STRIPE_PRICE_CONNECT;
+  const stripe = getStripe();
 
   try {
     const session = await stripe.checkout.sessions.create({

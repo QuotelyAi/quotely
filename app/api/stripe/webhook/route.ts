@@ -5,15 +5,22 @@ import Stripe from 'stripe';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-02-24.acacia',
-  typescript: true,
-});
-
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
-const slackWebhookUrl = process.env.SLACK_SALES_WEBHOOK_URL;
+let _stripe: Stripe | null = null;
+function getStripe() {
+  if (!_stripe) {
+    _stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+      apiVersion: '2025-02-24.acacia',
+      typescript: true,
+    });
+  }
+  return _stripe;
+}
 
 export async function POST(req: NextRequest) {
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+  const slackWebhookUrl = process.env.SLACK_SALES_WEBHOOK_URL;
+  const stripe = getStripe();
+
   const signature = req.headers.get('stripe-signature');
   if (!signature) return NextResponse.json({ error: 'Missing signature' }, { status: 400 });
   if (!webhookSecret) {
@@ -40,7 +47,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const session = event.data.object as Stripe.Checkout.Session;
-    await notifySlack({
+    await notifySlack(slackWebhookUrl, {
       email: session.customer_details?.email ?? 'unknown',
       amountTotal: session.amount_total ?? 0,
       currency: session.currency ?? 'usd',
@@ -57,7 +64,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-async function notifySlack(payload: {
+async function notifySlack(slackWebhookUrl: string | undefined, payload: {
   email: string;
   amountTotal: number;
   currency: string;
