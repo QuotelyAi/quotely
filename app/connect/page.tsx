@@ -12,7 +12,7 @@ interface ComparisonRow {
 
 const comparisonRows: ComparisonRow[] = [
   { feature: 'QUAD AI', connect: true, starter: true, professional: true },
-  { feature: 'TurboRater Auto Quotes', connect: '100/mo included', starter: 'Unlimited*', professional: 'Unlimited*' },
+  { feature: 'TurboRater Auto Quotes', connect: '100/mo included', starter: 'Highest volume', professional: 'Highest volume' },
   { feature: 'Quote Overage', connect: '$2.50/quote', starter: 'Token-based', professional: 'Token-based' },
   { feature: 'Per-agent pricing', connect: true, starter: false, professional: false },
   { feature: 'Momentum AMP AMS', connect: 'BYO (optional)', starter: 'Provisioned', professional: 'Provisioned' },

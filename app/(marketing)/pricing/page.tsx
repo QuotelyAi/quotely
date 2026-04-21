@@ -30,10 +30,10 @@ const tiers: Tier[] = [
   {
     name: 'Starter',
     price: 999,
-    description: 'Unlimited quoting with SMS-based AI outreach.',
+    description: 'High-volume quoting with SMS-based AI outreach.',
     features: [
       'Everything in Connect',
-      'Unlimited TurboRater quotes',
+      'Highest TurboRater quote volume',
       'QUAD AI + SMS channel',
       'Gail Voice AI',
       'Write to Quotely autonomy',
@@ -77,7 +77,7 @@ const comparisonRows = [
   { label: 'CRM', values: [true, true, true, true] },
   { label: 'Credential Vault', values: [true, true, true, true] },
   { label: 'API Access', values: [true, true, true, true] },
-  { label: 'Unlimited Quotes', values: [false, true, true, true] },
+  { label: 'Highest Quote Volume', values: [false, true, true, true] },
   { label: 'SMS Channel', values: [false, true, true, true] },
   { label: 'Gail Voice AI', values: [false, true, true, true] },
   { label: 'Telegram + Slack', values: [false, false, true, true] },
