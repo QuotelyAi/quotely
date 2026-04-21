@@ -15,8 +15,8 @@ const comparisonRows: ComparisonRow[] = [
   { feature: 'TurboRater Auto Quotes', connect: '100/mo included', starter: 'Highest volume', professional: 'Highest volume' },
   { feature: 'Quote Overage', connect: '$2.50/quote', starter: 'Token-based', professional: 'Token-based' },
   { feature: 'Per-agent pricing', connect: true, starter: false, professional: false },
-  { feature: 'Momentum AMP AMS', connect: 'BYO (optional)', starter: 'Provisioned', professional: 'Provisioned' },
-  { feature: 'Gail AI Voice', connect: 'BYO attach (optional)', starter: 'Provisioned', professional: 'Provisioned' },
+  { feature: 'Momentum AMP AMS', connect: false, starter: 'Provisioned', professional: 'Provisioned' },
+  { feature: 'Gail AI Voice', connect: false, starter: 'Provisioned', professional: 'Provisioned' },
   { feature: 'CRM', connect: false, starter: true, professional: true },
   { feature: 'IVANS', connect: false, starter: true, professional: true },
   { feature: 'API + Credential Vault', connect: false, starter: true, professional: true },
@@ -141,7 +141,7 @@ export default function ConnectPricingPage() {
                 'QUAD AI — lead scoring, email drafts, coverage summaries',
                 'TurboRater auto quotes — 100/mo included',
                 '200+ carriers, 50 states + DC',
-                'Fully standalone — no AMS or CRM required',
+                'TurboRater + QUAD AI — no AMS, CRM, or Voice included',
                 'Month-to-month, cancel anytime',
               ].map((f) => (
                 <li key={f} className="flex items-start gap-2.5 text-sm text-gray-300">
@@ -150,27 +150,6 @@ export default function ConnectPricingPage() {
                 </li>
               ))}
             </ul>
-
-            {/* Integration callout */}
-            <div className="rounded-xl border border-gray-700 bg-gray-800/50 p-5 mb-8">
-              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">
-                Optional BYO Integrations
-              </p>
-              <div className="space-y-2.5">
-                {[
-                  { name: 'Momentum AMP by NowCerts', detail: 'Bidirectional AMS sync' },
-                  { name: 'Gail AI by Nothing Technologies', detail: 'AI phone system attach' },
-                ].map(({ name, detail }) => (
-                  <div key={name} className="flex items-center justify-between gap-4">
-                    <span className="text-sm text-gray-300">{name}</span>
-                    <span className="text-xs text-gray-500 whitespace-nowrap">{detail}</span>
-                  </div>
-                ))}
-              </div>
-              <p className="text-xs text-gray-600 mt-3">
-                These are the only supported integrations. Bring your own credentials.
-              </p>
-            </div>
 
             <a
               href="https://quotely.info"
