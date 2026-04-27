@@ -7,7 +7,31 @@ const partners = [
   { name: 'Gail', logo: '/logos/gail.png', role: 'Voice AI' },
 ];
 
-export default function PartnerLogos() {
+interface PartnerLogosProps {
+  variant?: 'full' | 'compact';
+}
+
+export default function PartnerLogos({ variant = 'full' }: PartnerLogosProps) {
+  if (variant === 'compact') {
+    return (
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mb-6">
+        <span className="text-xs font-semibold text-gray-500 dark:text-gray-500 uppercase tracking-wider">
+          Powered by
+        </span>
+        {partners.map((p) => (
+          <Image
+            key={p.name}
+            src={p.logo}
+            alt={p.name}
+            width={120}
+            height={32}
+            className="object-contain h-6 w-auto opacity-80 hover:opacity-100 transition-opacity"
+          />
+        ))}
+      </div>
+    );
+  }
+
   return (
     <section className="py-16 bg-gray-50 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800 transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

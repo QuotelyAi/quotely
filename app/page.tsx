@@ -31,10 +31,12 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
             {/* Left Column */}
             <div>
-              <div className="flex items-center gap-2 mb-6">
+              <div className="flex items-center gap-2 mb-4">
                 <Zap size={18} className="text-yellow-500" />
                 <span className="text-gray-600 dark:text-gray-400 text-sm font-medium">AI-Powered Insurance Platform</span>
               </div>
+
+              <PartnerLogos variant="compact" />
 
               <h1 className="mb-6 leading-tight">
                 <span className="block text-5xl md:text-6xl lg:text-7xl font-black mb-2 text-yellow-500">
