@@ -4,9 +4,9 @@
 
 | Service | Project/Repo | URL |
 |---------|--------------|-----|
-| **Vercel** | `quotely-site` | https://tryquotely.com |
-| **GitHub** | `QuotelyAi/quotely-website` | https://github.com/QuotelyAi/quotely-website |
-| **Local Folder** | `quotely-platform/quotely-website` | This folder |
+| **Vercel** | `quotely-site` (team `quotely`) | https://tryquotely.com |
+| **GitHub** | `QuotelyAi/quotely` | https://github.com/QuotelyAi/quotely |
+| **Local Folder** | `C:/users/dusti/quotely-site` | This folder |
 
 ## IMPORTANT: Preventing Duplicate Projects
 
@@ -18,7 +18,7 @@ Running `vercel` or `vercel --prod` in a folder that isn't linked creates a NEW 
 cat .vercel/project.json
 ```
 
-Should show:
+Should show exactly:
 ```json
 {
   "projectId": "prj_N18E70UaV6yA57QwmIce7kJPMua7",
@@ -26,6 +26,10 @@ Should show:
   "projectName": "quotely-site"
 }
 ```
+
+If `projectName` shows `tryquotely-com` (orgId `team_4wNCjLWeCdMg1uqHbaBp3d93`),
+you are linked to a phantom duplicate in the personal scope, not the real
+project. Re-link using the recovery command below.
 
 ### If .vercel folder is missing or wrong:
 ```bash
@@ -89,7 +93,7 @@ Should only show:
 This folder is its own git repo, separate from the parent `quotely-platform`.
 
 ```
-Remote: https://github.com/QuotelyAi/quotely-website
+Remote: https://github.com/QuotelyAi/quotely
 Branch: main
 Auto-deploy: Yes (on push to main)
 ```
