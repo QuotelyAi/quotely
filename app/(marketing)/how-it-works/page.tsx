@@ -64,12 +64,17 @@ const pillars = [
 export default function HowItWorksPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-200">
-      <section className="bg-gradient-to-br from-primary-800 to-primary-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">How Quotely Works</h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-8">
+      <section className="relative overflow-hidden bg-white dark:bg-gray-950 py-20 transition-colors duration-200">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+          <div className="text-[18vw] font-black opacity-5 select-none whitespace-nowrap" style={{ color: '#FFD700', lineHeight: 1 }}>
+            How
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">How Quotely Works</h1>
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
             From client intake to bound policy — AMS, CRM, AI rating, and voice, all in one platform. A full auto + home
-            bundle quote in <span className="text-yellow-400 font-semibold">under 22 seconds</span>.
+            bundle quote in <span className="text-yellow-500 font-semibold">under 22 seconds</span>.
           </p>
           <Link
             href="/demo-request"
@@ -130,10 +135,10 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="bg-primary-800 text-white py-16">
+      <section className="py-20 bg-white dark:bg-gray-950 transition-colors duration-200">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">See it on your own book</h2>
-          <p className="text-xl text-white/90 mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">See it on your own book</h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
             A 20-minute walkthrough with a real quote from your existing carriers. No slides.
           </p>
           <Link
