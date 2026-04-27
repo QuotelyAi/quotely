@@ -67,7 +67,7 @@ const features: FeatureCategory[] = [
   {
     category: 'Integrations',
     items: [
-      { name: 'IVANS', values: [false, false, true, true] },
+      { name: 'IVANS', values: [false, true, true, true] },
       { name: 'API access', values: [false, true, true, true] },
       { name: 'Credential vault', values: [false, true, true, true] },
     ],
