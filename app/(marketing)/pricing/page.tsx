@@ -42,13 +42,11 @@ const tiers: Tier[] = [
   {
     name: 'Professional',
     price: 1799,
-    description: 'Multi-channel QUAD with self-learning and review council.',
+    description: 'Multi-channel QUAD across web, SMS, Telegram, and Slack.',
     featured: true,
     features: [
       'Everything in Starter',
       'QUAD AI + Telegram + Slack',
-      'QUAD Self-Learning',
-      'QUAD Review Council',
       'Write to integrations autonomy',
     ],
     quad: 'Write to Integrations',
@@ -56,10 +54,9 @@ const tiers: Tier[] = [
   {
     name: 'Enterprise',
     price: 2399,
-    description: 'Full autonomy, custom wiki, and outbound AI initiation.',
+    description: 'Full autonomy with outbound AI initiation and priority support.',
     features: [
       'Everything in Professional',
-      'QUAD Custom Wiki',
       'Outbound initiation autonomy',
       'Priority support',
     ],
@@ -78,9 +75,6 @@ const comparisonRows = [
   { label: 'Highest Quote Volume', values: [false, true, true, true] },
   { label: 'SMS Channel', values: [false, true, true, true] },
   { label: 'Telegram + Slack', values: [false, false, true, true] },
-  { label: 'QUAD Self-Learning', values: [false, false, true, true] },
-  { label: 'QUAD Review Council', values: [false, false, true, true] },
-  { label: 'QUAD Custom Wiki', values: [false, false, false, true] },
   { label: 'Outbound AI Initiation', values: [false, false, false, true] },
 ];
 

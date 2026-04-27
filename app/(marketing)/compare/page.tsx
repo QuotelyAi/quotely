@@ -50,9 +50,6 @@ const features: FeatureCategory[] = [
       { name: 'Write to Quotely', values: [false, true, true, true] },
       { name: 'Write to Integrations', values: [false, false, true, true] },
       { name: 'Outbound Initiation', values: [false, false, false, true] },
-      { name: 'QUAD Self-Learning', values: [false, false, true, true] },
-      { name: 'QUAD Review Council', values: [false, false, true, true] },
-      { name: 'QUAD Custom Wiki', values: [false, false, false, true] },
     ],
   },
   {
