@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Shield, TrendingUp, Users, Clock, Zap } from 'lucide-react';
 import type { Metadata } from 'next';
+import PartnerLogos from '@/components/PartnerLogos';
 
 export const metadata: Metadata = {
   title: 'Quotely - AI-Powered Insurance Intelligence Platform',
@@ -119,6 +120,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Partner Logos */}
+      <PartnerLogos />
 
       {/* Products Section */}
       <section className="py-20 bg-white dark:bg-gray-950 transition-colors duration-200">
