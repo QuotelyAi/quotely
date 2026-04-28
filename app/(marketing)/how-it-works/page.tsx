@@ -115,9 +115,9 @@ export default function HowItWorksPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {[
-              { title: 'Auto Quote Demo', video: '/videos/auto-quote-demo.mp4', time: '4.8 seconds' },
-              { title: 'Home Quote Demo', video: '/videos/ho-quote-demo.mp4', time: '17 seconds' },
-              { title: 'Full Bundle Demo', video: '/videos/combined-side-by-side.mp4', time: 'Under 22 seconds' },
+              { title: 'Auto Quote Demo', video: '/videos/auto-quote-demo.mp4', time: '3.9 seconds' },
+              { title: 'Home Quote Demo', video: '/videos/ho-quote-demo.mp4', time: '3.7 seconds' },
+              { title: 'Full Bundle Demo', video: '/videos/combined-side-by-side.mp4', time: '3.9 seconds' },
             ].map(({ title, video, time }) => (
               <div key={title} className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800">
                 <video
