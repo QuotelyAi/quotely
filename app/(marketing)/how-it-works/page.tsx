@@ -108,6 +108,39 @@ export default function HowItWorksPage() {
       <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">See the Speed in Action</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12">
+              Watch Quotely deliver quotes in real time — Auto in 4.8 seconds, Home in 17 seconds, and a full bundle in under 22 seconds.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            {[
+              { title: 'Auto Quote Demo', video: '/videos/auto-quote-demo.mp4', time: '4.8 seconds' },
+              { title: 'Home Quote Demo', video: '/videos/ho-quote-demo.mp4', time: '17 seconds' },
+              { title: 'Full Bundle Demo', video: '/videos/combined-side-by-side.mp4', time: 'Under 22 seconds' },
+            ].map(({ title, video, time }) => (
+              <div key={title} className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800">
+                <video
+                  controls
+                  className="w-full h-auto bg-gray-900"
+                  poster=""
+                >
+                  <source src={video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                <div className="p-4">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{title}</h3>
+                  <p className="text-sm text-yellow-500 font-medium">{time}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white dark:bg-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Four products, one platform</h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Use them together or drop Quotely in alongside your existing stack. Pricing is flat — everything included.
