@@ -53,7 +53,7 @@ export const blogPosts: BlogPost[] = [
   "readTime": "13 min read",
   "category": "Insurance Technology",
   "featured": true,
-  "image": "/blog-images/legacy-technology.jpg"
+  "image": "/blog-images/article-5.jpg"
 },
   {
   "id": "50-state-insurance-compliance-automation-best-practices-how-leading-agencies-sta",
