@@ -119,16 +119,18 @@ export default function HowItWorksPage() {
               { title: 'Home Quote Demo', video: '/videos/ho-quote-demo.mp4', time: '3.7 seconds' },
               { title: 'Full Bundle Demo', video: '/videos/combined-side-by-side.mp4', time: '3.9 seconds' },
             ].map(({ title, video, time }) => (
-              <div key={title} className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800">
-                <video
-                  controls
-                  className="w-full h-auto bg-gray-900"
-                  poster=""
-                >
-                  <source src={video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                <div className="p-4">
+              <div key={title} className="bg-white dark:bg-gray-950 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 flex flex-col h-full">
+                <div className="aspect-video bg-gray-900 flex-shrink-0">
+                  <video
+                    controls
+                    className="w-full h-full"
+                    poster=""
+                  >
+                    <source src={video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div className="p-4 flex-grow">
                   <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{title}</h3>
                   <p className="text-sm text-yellow-500 font-medium">{time}</p>
                 </div>
